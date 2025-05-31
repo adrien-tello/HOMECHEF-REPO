@@ -23,17 +23,139 @@ const CookAssistant = ({ recipe, onBack }: CookAssistantProps) => {
     setFrequency(parseInt(e.target.value));
   };
 
+  // FCFA cost calculation method
+  const calculateFCFACost = () => {
+    // Base ingredient costs in FCFA (West African prices)
+    const ingredientBaseCosts: { [key: string]: number } = {
+      // Proteins
+      'chicken': 2500,
+      'beef': 3000,
+      'fish': 2000,
+      'pork': 2800,
+      'eggs': 150,
+      
+      // Vegetables
+      'tomato': 500,
+      'onion': 300,
+      'pepper': 400,
+      'carrot': 250,
+      'potato': 200,
+      'garlic': 100,
+      
+      // Grains & Starches
+      'rice': 800,
+      'bread': 300,
+      'flour': 400,
+      'pasta': 600,
+      
+      // Dairy
+      'milk': 600,
+      'cheese': 1500,
+      'butter': 800,
+      
+      // Spices & Seasonings
+      'salt': 50,
+      'oil': 1200,
+      'sugar': 400,
+      
+      // Default for unknown ingredients
+      'default': 500
+    };
+
+    let totalBaseCost = 0;
+
+    // Calculate cost based on ingredients
+    recipe.ingredients.forEach(ingredient => {
+      const ingredientName = ingredient.name.toLowerCase();
+      let unitCost = ingredientBaseCosts['default'];
+      
+      // Find matching ingredient cost
+      for (const [key, cost] of Object.entries(ingredientBaseCosts)) {
+        if (ingredientName.includes(key)) {
+          unitCost = cost;
+          break;
+        }
+      }
+      
+      // Adjust cost based on quantity and unit
+      let quantityMultiplier = ingredient.quantity;
+      
+      // Adjust multiplier based on unit type
+      switch (ingredient.unit.toLowerCase()) {
+        case 'kg':
+        case 'kilogram':
+          quantityMultiplier *= 1;
+          break;
+        case 'g':
+        case 'gram':
+          quantityMultiplier *= 0.001;
+          break;
+        case 'l':
+        case 'liter':
+          quantityMultiplier *= 1;
+          break;
+        case 'ml':
+        case 'milliliter':
+          quantityMultiplier *= 0.001;
+          break;
+        case 'piece':
+        case 'pcs':
+          quantityMultiplier *= 0.1;
+          break;
+        case 'cup':
+          quantityMultiplier *= 0.25;
+          break;
+        case 'tbsp':
+        case 'tablespoon':
+          quantityMultiplier *= 0.015;
+          break;
+        case 'tsp':
+        case 'teaspoon':
+          quantityMultiplier *= 0.005;
+          break;
+        default:
+          quantityMultiplier *= 0.1;
+      }
+      
+      totalBaseCost += unitCost * quantityMultiplier;
+    });
+
+    // Adjust for number of people
+    const peopleAdjustedCost = totalBaseCost * (people / recipe.servings);
+    
+    // Adjust for frequency
+    const frequencyAdjustedCost = peopleAdjustedCost * frequency;
+    
+    // Add overhead costs (cooking gas, electricity, etc.) - approximately 15%
+    const overheadCost = frequencyAdjustedCost * 0.15;
+    
+    // Add market fluctuation factor (5-10% variation)
+    const marketVariation = 1 + (Math.random() * 0.1 + 0.05);
+    
+    const finalCost = (frequencyAdjustedCost + overheadCost) * marketVariation;
+    
+    return Math.round(finalCost);
+  };
+
   const calculateEstimates = () => {
     setCalculating(true);
     
     // Simulate API call for cost calculation
     setTimeout(() => {
-      // This is just a simulation
-      const baseCost = Math.floor(Math.random() * 30) + 15; // Random cost between 15-45
-      const totalCost = baseCost * (people / recipe.servings) * frequency;
-      setCalculatedCost(Math.round(totalCost * 100) / 100);
+      const totalCostFCFA = calculateFCFACost();
+      setCalculatedCost(totalCostFCFA);
       setCalculating(false);
     }, 1500);
+  };
+
+  // Format FCFA currency
+  const formatFCFA = (amount: number) => {
+    return new Intl.NumberFormat('fr-FR', {
+      style: 'currency',
+      currency: 'XOF',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount).replace('XOF', 'FCFA');
   };
 
   return (
@@ -104,7 +226,7 @@ const CookAssistant = ({ recipe, onBack }: CookAssistantProps) => {
                 Calculating...
               </span>
             ) : (
-              'Calculate Estimates'
+              'Calculate Estimates (FCFA)'
             )}
           </button>
         </div>
@@ -142,7 +264,7 @@ const CookAssistant = ({ recipe, onBack }: CookAssistantProps) => {
                 <DollarSign size={20} className="mr-2 text-orange-500" />
                 <h4 className="font-medium">Estimated Cost</h4>
               </div>
-              <p className="text-2xl font-bold">${calculatedCost.toFixed(2)}</p>
+              <p className="text-2xl font-bold">{formatFCFA(calculatedCost)}</p>
               <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                 Total for {frequency} time{frequency !== 1 ? 's' : ''}
               </p>
@@ -164,6 +286,28 @@ const CookAssistant = ({ recipe, onBack }: CookAssistantProps) => {
                 );
               })}
             </ul>
+          </div>
+          
+          <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-blue-900' : 'bg-blue-50'} mb-6`}>
+            <h4 className="font-medium mb-2 text-blue-600 dark:text-blue-400">Cost Breakdown (FCFA)</h4>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <span className="text-gray-600 dark:text-gray-400">Base ingredients:</span>
+                <span className="float-right font-medium">{formatFCFA(Math.round(calculatedCost * 0.75))}</span>
+              </div>
+              <div>
+                <span className="text-gray-600 dark:text-gray-400">Overhead (gas, etc.):</span>
+                <span className="float-right font-medium">{formatFCFA(Math.round(calculatedCost * 0.15))}</span>
+              </div>
+              <div>
+                <span className="text-gray-600 dark:text-gray-400">Market variation:</span>
+                <span className="float-right font-medium">{formatFCFA(Math.round(calculatedCost * 0.1))}</span>
+              </div>
+              <div className="col-span-2 border-t pt-2 mt-2">
+                <span className="font-semibold">Total Cost:</span>
+                <span className="float-right font-bold text-lg">{formatFCFA(calculatedCost)}</span>
+              </div>
+            </div>
           </div>
           
           <div className="flex justify-center">
