@@ -29,7 +29,8 @@ interface VideoState {
 
 const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
   const { theme } = useTheme();
-  const playerRef = useRef<ReactPlayer>(null);
+
+  const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -273,23 +274,40 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
         }}
       >
         <div className={`relative ${videoState.fullscreen ? 'h-full' : 'aspect-video'}`}>
-          <ReactPlayer
-            ref={playerRef}
-            url={recipe.videoUrl}
-            width="100%"
-            height="100%"
-            playing={videoState.playing}
-            volume={videoState.volume}
-            muted={videoState.muted}
-            playbackRate={videoState.playbackRate}
-            onProgress={handleProgress}
-            onDuration={handleDuration}
-            onReady={handleReady}
-            onBuffer={handleBuffer}
-            onBufferEnd={handleBufferEnd}
-            onEnded={handleEnded}
-            onError={handleError}
-            config={{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          {React.createElement(ReactPlayer, {
+            ref: playerRef,
+            url: recipe.videoUrl,
+            width: "100%",
+            height: "100%",
+            playing: videoState.playing,
+            volume: videoState.volume,
+            muted: videoState.muted,
+            playbackRate: videoState.playbackRate,
+            onProgress: handleProgress,
+            onDuration: handleDuration,
+            onReady: handleReady,
+            onBuffer: handleBuffer,
+            onBufferEnd: handleBufferEnd,
+            onEnded: handleEnded,
+            onError: handleError,
+            config: {
               youtube: {
                 playerVars: {
                   showinfo: 0,
@@ -304,8 +322,10 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
                   controls: false
                 }
               }
-            }}
-          />
+
+
+            }
+          })}
 
           {(videoState.buffering || !videoState.ready) && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/50">
@@ -355,4 +375,7 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
     </div>
   );
 
-};export default RecipeVideo;
+
+};
+
+export default RecipeVideo;
