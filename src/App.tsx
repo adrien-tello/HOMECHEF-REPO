@@ -13,6 +13,7 @@ import MyExperience from './pages/MyExperience';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RecipeOfDay from './pages/RecipeOfDay';
+import Landing from './pages/Landing';
 
 function App() {
   return (
@@ -21,10 +22,11 @@ function App() {
         <AuthProvider>
           <Router>
             <Routes>
+              <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route element={<Layout />}>
-                <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                 <Route path="/recipe/:id" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
                 <Route path="/my-recipes" element={<ProtectedRoute><MyRecipes /></ProtectedRoute>} />
                 <Route path="/about-us" element={<ProtectedRoute><AboutUs /></ProtectedRoute>} />
