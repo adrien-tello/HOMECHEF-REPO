@@ -45,15 +45,62 @@ const AboutUs = () => {
           HomeChef was created by a team of Cameroonian food enthusiasts, chefs, and software developers who are passionate about sharing their culinary heritage with the world.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((index) => (
-            <div key={index} className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-              <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3"></div>
-              <h3 className="font-bold">Team Member {index}</h3>
-              <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Position</p>
-            </div>
-          ))}
-        </div>
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {/* Scrum Master */}
+  <div className={`col-span-1 md:col-span-3 text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/cd/39/ef/cd39ef74c2d90a25f603f8c43269cb11.jpg" alt="Scrum Master" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Yann Aymerick</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Scrum Master</p>
+  </div>
+
+  {/* Product Owner */}
+  <div className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/cb/40/bd/cb40bd7f6b8ee289051a6215bf1f9690.jpg" alt="Product" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Mikey Jovany</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Product Owner</p>
+  </div>
+
+  {/* CTO */}
+  <div className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/3a/22/9b/3a229bb1952a41202d98d1f6b94444a5.jpg" alt="CTO" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Adrien Nathan</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>CTO</p>
+  </div>
+
+  {/* Other team members */}
+  {/* Member 1 */}
+  <div className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/23/9d/85/239d8551beea92a3bbf8f5fa0cf0567c.jpg" alt="Member 1" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Tanefo Valentin</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Backend Developer</p>
+  </div>
+
+  {/* Member 2 */}
+  <div className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/98/73/74/9873744634608f92c7bdb737c5b82173.jpg" alt="Member 2" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Coralex Joel</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>Frontend Developer</p>
+  </div>
+
+  {/* Member 3 */}
+  <div className={`text-center p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+    <div className="w-20 h-20 rounded-full bg-gray-300 mx-auto mb-3">
+      <img src="https://i.pinimg.com/736x/6b/f5/2e/6bf52e0a90a72dd873523ec3823e3b47.jpg" alt="Member 3" className="w-full h-full rounded-full object-cover" />
+    </div>
+    <h3 className="font-bold">Yemeli Tane</h3>
+    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>QA Engineer</p>
+  </div>
+</div>
       </div>
       
       <div className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
