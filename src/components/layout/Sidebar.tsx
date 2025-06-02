@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   const navItems = [
-    { path: '/', icon: <Home size={20} />, label: t('nav.home') },
+    { path: '/home', icon: <Home size={20} />, label: t('nav.home') },
     { path: '/my-recipes', icon: <BookOpen size={20} />, label: t('nav.myRecipes') },
     { path: '/about-us', icon: <Info size={20} />, label: t('nav.aboutUs') },
     { path: '/recipe-of-day', icon: <Calendar size={20} />, label: t('nav.recipeOfDay') },
@@ -23,11 +23,11 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className={`w-64 h-full fixed md:static left-0 top-0 z-40 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${location.pathname === '/login' || location.pathname === '/register' ? 'hidden' : '-translate-x-full md:translate-x-0'} ${theme === 'dark' ? 'bg-orange-900' : 'bg-white'} shadow-lg md:shadow-none mt-16 md:mt-0`}>
+    <aside className={`w-64 h-full fixed md:static left-0 top-0 z-40 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${location.pathname === '/login' || location.pathname === '/register' ? 'hidden' : '-translate-x-full md:translate-x-0'} ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} shadow-lg md:shadow-none mt-16 md:mt-0`}>
       <div className="flex flex-col h-full py-6">
         <div className="px-6 mb-6">
           <div className={`rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2 ${theme === 'dark' ? 'bg-orange-500' : 'bg-orange-100'}`}>
-            <span className="text-2xl"><img src="https://ibb.co/TMQb442F" alt="logo" width={100} /></span>
+            <span className="text-2xl">🍲</span>
           </div>
           <h2 className="text-xl font-bold text-center">HomeChef</h2>
         </div>
@@ -41,7 +41,7 @@ const Sidebar = () => {
                   className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
                     isActive(item.path)
                       ? 'bg-orange-500 text-white'
-                      : `${theme === 'dark' ? 'hover:bg-orange-900' : 'hover:bg-orange-100'}`
+                      : `${theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-100'}`
                   }`}
                 >
                   <span className="mr-3">{item.icon}</span>
@@ -55,7 +55,7 @@ const Sidebar = () => {
         <div className="px-3 mt-6 space-y-3">
           <button
             onClick={toggleTheme}
-            className={`flex w-full items-center px-3 py-2 rounded-lg transition-colors ${theme === 'dark' ? 'hover:bg-orange-700' : 'hover:bg-orange-100'}`}
+            className={`flex w-full items-center px-3 py-2 rounded-lg transition-colors ${theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-100'}`}
           >
             <span className="mr-3">
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -65,7 +65,7 @@ const Sidebar = () => {
           
           <button
             onClick={logout}
-            className={`flex w-full items-center px-3 py-2 rounded-lg transition-colors text-red-500 ${theme === 'dark' ? 'hover:bg-orange-700' : 'hover:bg-orange-100'}`}
+            className={`flex w-full items-center px-3 py-2 rounded-lg transition-colors text-red-500 ${theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-100'}`}
           >
             <span className="mr-3">
               <LogOut size={20} />
