@@ -100,6 +100,15 @@ const Header = () => {
       difficulty: 'Medium'
     },
     {
+      id: '1',
+      title: 'Ndolé',
+      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
+      category: 'Douala',
+      tags: ['bitter leaves', 'Douala', 'best'],
+      cookingTime: 60,
+      difficulty: 'Medium'
+    },
+    {
       id: '4',
       title: 'Jollof rice',
       description: 'South west',
