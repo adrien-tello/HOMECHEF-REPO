@@ -30,6 +30,7 @@ const RecipeOfDay = () => {
     "Cameroon has morethan 250 ethnic groups-and each has unique recipes",
     "Traditional cameroon cooks often dont use measuring cups",
     "Some cameroonian tribes beleive that eating snails increaseswisdom and patience",
+    "Cameroon is said to be a continent ☻☻",
   ];
 
   useEffect(() => {
