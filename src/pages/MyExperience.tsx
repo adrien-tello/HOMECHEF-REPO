@@ -1,10 +1,20 @@
-import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { Calendar, Star, Clock } from 'lucide-react';
+import { useCookingExperience } from '../context/CookingExperienceContext';
+import { Calendar, Clock, Users, DollarSign } from 'lucide-react';
 
 const MyExperience = () => {
   const { theme } = useTheme();
-  const [experiences, setExperiences] = useState<any[]>([]);
+  const { experiences } = useCookingExperience();
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(date);
+  };
 
   return (
     <div className="container mx-auto">
@@ -22,33 +32,63 @@ const MyExperience = () => {
           <p className={`mb-6 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             Start your culinary journey by cooking a recipe!
           </p>
-          <div className="space-y-4">
-            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-              When you cook a recipe, we'll track it here so you can:
-            </p>
-            <ul className="text-left max-w-md mx-auto space-y-2">
-              <li className="flex items-start">
-                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
-                <span>Keep notes on your adjustments and results</span>
-              </li>
-              <li className="flex items-start">
-                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
-                <span>Rate recipes based on your experience</span>
-              </li>
-              <li className="flex items-start">
-                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
-                <span>Track how many times you've cooked each dish</span>
-              </li>
-              <li className="flex items-start">
-                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
-                <span>Build your personal cooking history</span>
-              </li>
-            </ul>
-          </div>
         </div>
       ) : (
         <div className="space-y-6">
-          {/* Experience entries would go here */}
+          {experiences.map((experience) => (
+            <div key={experience.id} className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center">
+                  <img 
+                    src={experience.recipe.imageUrl} 
+                    alt={experience.recipe.name}
+                    className="w-16 h-16 rounded-lg object-cover mr-4"
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold">{experience.recipe.name}</h3>
+                    <div className="flex items-center text-sm text-gray-500 mt-1">
+                      <Calendar size={16} className="mr-1" />
+                      {formatDate(experience.cookedAt)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+                  <div className="flex items-center mb-1">
+                    <Users size={16} className="mr-1 text-orange-500" />
+                    <span className="text-sm font-medium">People</span>
+                  </div>
+                  <p className="text-lg font-bold">{experience.people}</p>
+                </div>
+                
+                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+                  <div className="flex items-center mb-1">
+                    <Clock size={16} className="mr-1 text-orange-500" />
+                    <span className="text-sm font-medium">Time</span>
+                  </div>
+                  <p className="text-lg font-bold">{experience.adjustedTime} mins</p>
+                </div>
+                
+                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+                  <div className="flex items-center mb-1">
+                    <DollarSign size={16} className="mr-1 text-orange-500" />
+                    <span className="text-sm font-medium">Cost</span>
+                  </div>
+                  <p className="text-lg font-bold">${experience.estimatedCost.toFixed(2)}</p>
+                </div>
+                
+                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
+                  <div className="flex items-center mb-1">
+                    <span className="text-orange-500 mr-1">🔄</span>
+                    <span className="text-sm font-medium">Times</span>
+                  </div>
+                  <p className="text-lg font-bold">{experience.frequency}x</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       )}
       
