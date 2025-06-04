@@ -5,13 +5,17 @@ import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import LanguageSelector from '../ui/LanguageSelector';
 
-const Header = () => {
+// Add props interface
+interface HeaderProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
+}
+
+const Header = ({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) => {
   const { user } = useAuth();
   const { t } = useLanguage();
   const navigate = useNavigate();
-
   const [searchQuery, setSearchQuery] = useState('');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showSearchResults, setShowSearchResults] = useState(false);
@@ -38,7 +42,7 @@ const Header = () => {
     },
     {
       id: '1',
-      title: 'Ndolé',
+      title: 'Ndole',
       description: 'Cameroons best food a mixture of groundnut and bitter leaves',
       category: 'Douala',
       tags: ['bitter leaves', 'Douala', 'best'],
@@ -46,77 +50,70 @@ const Header = () => {
       difficulty: 'Medium'
     },
     {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
+      id: '8',
+      title: 'Mbongo Tchobi',
+      description: 'Black  spicy soup',
       category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
+      tags: ['black', 'spicy', 'rich'],
+      cookingTime: 90,
+      difficulty: 'Medium'
+    },
+    
+    {
+      id: '9',
+      title: 'Koki',
+      description: 'Koki is a traditional dish made from white-eyed peas blended into a paste,',
+      category: 'Northwest',
+      tags: ['beans', 'Northwest', 'yellow'],
+      cookingTime: 90,
+      difficulty: 'High'
+    },
+     {
+      id: '6',
+      title: 'Okok',
+      description: 'Okok Sucré is a delicacy from Cameroon’s Centre and South regions. It combines Gnetum leaves (known locally as ‘okok’), groundnuts, and palm nut cream, resulting in a slightly sweet and savory dish.',
+      category: 'Centre',
+      tags: ['sweet', 'center', 'rich'],
+      cookingTime: 90,
       difficulty: 'Medium'
     },
     {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
+      id: '7',
+      title: 'pepper soup',
+      description: 'Pepper Soup is a light, spicy and rish soup',
+      category: 'Grassfeild',
+      tags: ['pepper', 'light', 'tasty'],
+      cookingTime: 45,
+      difficulty: 'Easy'
+    },
+    {
+      id: '10',
+      title: 'Jollof rice',
+      description: 'Spicy,colorfoul and very tasty rice',
       category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
+      tags: ['rice', 'Center', 'tasty'],
+      cookingTime: 30,
       difficulty: 'Medium'
     },
     {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
-      category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
-      difficulty: 'Medium'
-    },
-    {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
-      category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
-      difficulty: 'Medium'
-    },
-    {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
-      category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
-      difficulty: 'Medium'
-    },
-    {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
-      category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
-      difficulty: 'Medium'
-    },
-    {
-      id: '1',
-      title: 'Ndolé',
-      description: 'Cameroons best food a mixture of groundnut and bitter leaves',
-      category: 'Douala',
-      tags: ['bitter leaves', 'Douala', 'best'],
-      cookingTime: 60,
-      difficulty: 'Medium'
+      id: '5',
+      title: 'Kondre',
+      description: 'Kondre is a hearty stew of well cooked planatins from Cameroon’s Western Region,',
+      category: 'West',
+      tags: ['plantains', 'West', 'stewed'],
+      cookingTime: 120,
+      difficulty: 'high'
     },
     {
       id: '4',
-      title: 'Jollof rice',
-      description: 'South west',
-      category: 'Mexican',
-      tags: ['rice', 'cury', 'delicious'],
-      cookingTime: 30,
-      difficulty: 'Easy'
-    }
+      title: 'Achu soup',
+      description: 'A traditional yellow soup from Cameroon\'s Northwest Region, usually served with achu (pounded cocoyam).',
+      category: 'West',
+      tags: ['Yellow soup', 'achu', 'tasty'],
+      cookingTime: 120,
+      difficulty: 'Medium'
+    },
+    
   ];
 
   // Search function
