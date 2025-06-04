@@ -1,10 +1,28 @@
+import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { useCookingExperience } from '../context/CookingExperienceContext';
-import { Calendar, Clock, Users, DollarSign } from 'lucide-react';
+import { Calendar, Star, Clock, Users, DollarSign } from 'lucide-react';
 
 const MyExperience = () => {
   const { theme } = useTheme();
   const { experiences } = useCookingExperience();
+
+  const StarDisplay = ({ rating }: { rating?: number }) => {
+    if (!rating) return null;
+    
+    return (
+      <div className="flex items-center space-x-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            size={16}
+            className={star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+          />
+        ))}
+        <span className="ml-1 text-sm text-gray-500">({rating}/5)</span>
+      </div>
+    );
+  };
 
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
@@ -32,59 +50,93 @@ const MyExperience = () => {
           <p className={`mb-6 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
             Start your culinary journey by cooking a recipe!
           </p>
+          <div className="space-y-4">
+            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+              When you cook a recipe, we'll track it here so you can:
+            </p>
+            <ul className="text-left max-w-md mx-auto space-y-2">
+              <li className="flex items-start">
+                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
+                <span>Keep notes on your adjustments and results</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
+                <span>Rate recipes based on your experience</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
+                <span>Track how many times you've cooked each dish</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block w-2 h-2 rounded-full mt-2 mr-2 bg-orange-500"></span>
+                <span>Build your personal cooking history</span>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : (
         <div className="space-y-6">
           {experiences.map((experience) => (
             <div key={experience.id} className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center">
-                  <img 
-                    src={experience.recipe.imageUrl} 
-                    alt={experience.recipe.name}
-                    className="w-16 h-16 rounded-lg object-cover mr-4"
-                  />
-                  <div>
-                    <h3 className="text-xl font-bold">{experience.recipe.name}</h3>
-                    <div className="flex items-center text-sm text-gray-500 mt-1">
-                      <Calendar size={16} className="mr-1" />
-                      {formatDate(experience.cookedAt)}
+              <div className="flex items-start space-x-4">
+                <img 
+                  src={experience.recipe.imageUrl} 
+                  alt={experience.recipe.name}
+                  className="w-20 h-20 rounded-lg object-cover"
+                />
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{experience.recipe.name}</h3>
+                      <div className="flex items-center space-x-4 text-sm text-gray-500 mb-2">
+                        <div className="flex items-center">
+                          <Calendar size={14} className="mr-1" />
+                          {experience.cookedAt.toLocaleDateString()}
+                        </div>
+                        <div className="flex items-center">
+                          <Users size={14} className="mr-1" />
+                          {experience.people} people
+                        </div>
+                        <div className="flex items-center">
+                          <Clock size={14} className="mr-1" />
+                          {experience.adjustedTime} mins
+                        </div>
+                        <div className="flex items-center">
+                          <DollarSign size={14} className="mr-1" />
+                          ${experience.estimatedCost.toFixed(2)}
+                        </div>
+                      </div>
                     </div>
+                    
+                    {experience.rating && (
+                      <div className="text-right">
+                        <StarDisplay rating={experience.rating} />
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-                  <div className="flex items-center mb-1">
-                    <Users size={16} className="mr-1 text-orange-500" />
-                    <span className="text-sm font-medium">People</span>
+                  
+                  {experience.notes && (
+                    <div className={`mt-3 p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                      <p className="text-sm">
+                        <strong>Notes:</strong> {experience.notes}
+                      </p>
+                    </div>
+                  )}
+                  
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Cooked {experience.frequency} time{experience.frequency !== 1 ? 's' : ''}
+                    </span>
+                    
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      experience.recipe.difficulty === 'easy' ? 'bg-green-100 text-green-800' :
+                      experience.recipe.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
+                    }`}>
+                      {experience.recipe.difficulty}
+                    </span>
                   </div>
-                  <p className="text-lg font-bold">{experience.people}</p>
-                </div>
-                
-                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-                  <div className="flex items-center mb-1">
-                    <Clock size={16} className="mr-1 text-orange-500" />
-                    <span className="text-sm font-medium">Time</span>
-                  </div>
-                  <p className="text-lg font-bold">{experience.adjustedTime} mins</p>
-                </div>
-                
-                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-                  <div className="flex items-center mb-1">
-                    <DollarSign size={16} className="mr-1 text-orange-500" />
-                    <span className="text-sm font-medium">Cost</span>
-                  </div>
-                  <p className="text-lg font-bold">${experience.estimatedCost.toFixed(2)}</p>
-                </div>
-                
-                <div className={`p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-                  <div className="flex items-center mb-1">
-                    <span className="text-orange-500 mr-1">🔄</span>
-                    <span className="text-sm font-medium">Times</span>
-                  </div>
-                  <p className="text-lg font-bold">{experience.frequency}x</p>
                 </div>
               </div>
             </div>
