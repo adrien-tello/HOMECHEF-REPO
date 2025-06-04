@@ -16,7 +16,7 @@ const Login = () => {
     setError('');
     try {
       await login(email, password);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setError('Invalid email or password');
     }
@@ -38,11 +38,16 @@ const Login = () => {
         {/* Left Section */}
         <div className="w-full md:w-1/2 bg-orange-50 dark:bg-gray-800 flex flex-col justify-center items-center p-6 md:p-12 transition-all duration-700">
           <div className="w-full max-w-md animate-fadeIn">
-            <h1 className="text-4xl font-extrabold text-orange-800 dark:text-orange-400 mb-2 font-serif">Home<span className="text-yellow-500 dark:text-yellow-300">Chef</span></h1>
+            <h1 className="text-4xl font-extrabold text-orange-800 dark:text-orange-400 mb-2 font-serif">
+              Home<span className="text-yellow-500 dark:text-yellow-300">Chef</span>
+            </h1>
             <h2 className="text-3xl font-bold text-brown-900 dark:text-white mb-6 font-serif">Sign in</h2>
 
             <p className="mb-4 text-gray-600 dark:text-gray-300 text-sm">
-              Don't have an account? <Link to="/register" className="text-blue-600 dark:text-blue-400 font-medium">Create now</Link>
+              Don't have an account?{' '}
+              <Link to="/register" className="text-blue-600 dark:text-blue-400 font-medium">
+                Create now
+              </Link>
             </p>
 
             {error && (
@@ -89,14 +94,21 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="text-right mt-1">
-                  <Link to="/forgot" className="text-sm text-blue-600 dark:text-blue-400">Forgot Password?</Link>
+                  <Link to="/forgot" className="text-sm text-blue-600 dark:text-blue-400">
+                    Forgot Password?
+                  </Link>
                 </div>
               </div>
 
+              {/* Sign In Button with brown light-mode color */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2 bg-[#ff6b00] text-white rounded-md shadow hover:bg-orange-700 transition"
+                className={`w-full py-2 rounded-md shadow transition text-white ${
+                  darkMode
+                    ? 'bg-[#ff6b00] hover:bg-orange-700'
+                    : 'bg-[#371d14] hover:bg-[#220e08]'
+                }`}
               >
                 {loading ? 'Loading...' : 'Sign in'}
               </button>
@@ -105,12 +117,20 @@ const Login = () => {
             <div className="my-6 text-center text-sm text-gray-500 dark:text-gray-300">or</div>
 
             <button className="w-full flex items-center justify-center py-2 border rounded-md mb-3 bg-white dark:bg-gray-700 dark:text-white shadow transition hover:scale-105">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-5 h-5 mr-2" />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                alt="Google"
+                className="w-5 h-5 mr-2"
+              />
               Continue with Google
             </button>
 
             <button className="w-full flex items-center justify-center py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white shadow transition hover:scale-105">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" className="w-5 h-5 mr-2" />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                alt="Facebook"
+                className="w-5 h-5 mr-2"
+              />
               Continue with Facebook
             </button>
           </div>
@@ -119,17 +139,27 @@ const Login = () => {
         {/* Right Section */}
         <div
           className={`w-full md:w-1/2 flex flex-col items-center justify-center p-6 md:p-12 animate-fadeIn ${
-            darkMode ? 'bg-gray-700' : ''}`}
-          style={{ backgroundColor: darkMode ? undefined : '#371d14' }}
+            darkMode ? 'bg-gray-700' : ''
+          }`}
+          style={{
+            background: darkMode
+              ? undefined
+              : 'linear-gradient(to bottom, #5a2e20, #371d14, #220e08)',
+          }}
         >
           <img
             src="https://i.pinimg.com/736x/21/0e/c3/210ec3ca4b2999d93f98c35208f97254.jpg"
             alt="Chef"
             className="w-32 h-32 md:w-48 md:h-48 mb-6 rounded-full shadow-lg transition-transform duration-500 hover:scale-110"
           />
-          <h3 className="text-2xl md:text-3xl font-bold mb-2 font-serif">Welcome To HomeChef</h3>
-          <p className="text-center text-sm md:text-base max-w-sm">
-            The Only Digital Platform That Brings To You A Refined Collection Of Meticulously Selected Meals From Africa in Miniature
+          <h3 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
+            Welcome Back Home
+          </h3>
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
+            My Chef
+          </h1>
+          <p className="text-center text-sm md:text-base max-w-sm text-white">
+            Glad to see you back. What are you going to learn today?  From easy to complex, we have them all.
           </p>
         </div>
       </div>
