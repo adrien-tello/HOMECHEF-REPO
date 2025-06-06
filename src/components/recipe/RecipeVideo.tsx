@@ -29,7 +29,8 @@ interface VideoState {
 
 const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
   const { theme } = useTheme();
-  const playerRef = useRef<ReactPlayer>(null);
+
+  const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -354,5 +355,4 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
       </div>
     </div>
   );
-
 };export default RecipeVideo;
