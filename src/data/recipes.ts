@@ -447,8 +447,8 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '14',
-    name: 'Macabo Râpé and White Sauce',
-    description: 'a delicious macabo dish accompanied with white sauce from western Cameroon',
+    name: 'Pounded cocoyam and White Sauce',
+    description: 'a delicious cocoyam dish accompanied with white sauce from western Cameroon',
     imageUrl: 'https://i.pinimg.com/736x/7f/71/2a/7f712a4967bbdb351cd94c30f883a26d.jpg',
     videoUrl: 'https://youtu.be/xs3RyLzkENs',
     prepTime: 60,
@@ -497,7 +497,7 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '15',
-    name: 'le Poisson braisée',
+    name: 'Roasted Fish',
     description: 'A typical Cameroonian recipe: roasted fish, quick and easy to make.',
     imageUrl: 'https://i.pinimg.com/736x/d3/c2/05/d3c205ff61b5ff713ab817619822f6ae.jpg',
     videoUrl: 'https://youtu.be/einMc2In9g8',
