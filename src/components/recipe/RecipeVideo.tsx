@@ -5,7 +5,9 @@ import {
   Pause, 
   Volume2, 
   VolumeX,
-  Settings
+  Settings,
+  Maximize,
+  Minimize
 } from 'lucide-react';
 import { Recipe } from '../../types';
 import { useTheme } from '../../context/ThemeContext';
@@ -348,6 +350,13 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
               </button>
               <button className="p-2" onClick={() => setShowSettings(!showSettings)}>
                 <Settings className="h-6 w-6 text-white" />
+              </button>
+              <button className="p-2" onClick={handleFullscreen} aria-label="Toggle Fullscreen">
+                {videoState.fullscreen ? (
+                  <Minimize className="h-6 w-6 text-white" />
+                ) : (
+                  <Maximize className="h-6 w-6 text-white" />
+                )}
               </button>
             </div>
           </div>
