@@ -411,7 +411,7 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '13',
-    name: 'Mbogo tchobi',
+    name: 'Mbongo tchobi',
     description: 'Today I present to you a SAWA dish, more precisely Bassa. It is a sauce made with burnt bark. A tasty and aromatic delight.',
     imageUrl: 'https://i.pinimg.com/736x/21/d0/3f/21d03fe73c6785cc9b2bdfa3299298c3.jpg',
     videoUrl: 'https://youtu.be/PV6LH1Z7__M',
