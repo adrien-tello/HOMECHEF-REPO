@@ -282,16 +282,25 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
             />
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center">
+              <div className="flex items-center space-x-2">
                 <button className="p-2" onClick={handlePlayPause}>
                   {videoState.playing ? <Pause className="h-6 w-6 text-white" /> : <Play className="h-6 w-6 text-white" />}
                 </button>
-                <button className="p-2" onClick={() => handleSkip(-10)}>
-                  <span className="text-white text-sm">-10s</span>
+
+                <button
+                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center text-sm font-semibold transition"
+                  onClick={() => handleSkip(-10)}
+                >
+                  -10
                 </button>
-                <button className="p-2" onClick={() => handleSkip(10)}>
-                  <span className="text-white text-sm">+10s</span>
+
+                <button
+                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center text-sm font-semibold transition"
+                  onClick={() => handleSkip(10)}
+                >
+                  +10
                 </button>
+
                 <input
                   type="range"
                   min="0"
