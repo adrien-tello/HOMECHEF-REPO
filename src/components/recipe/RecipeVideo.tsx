@@ -5,12 +5,11 @@ import {
   Pause, 
   Volume2, 
   VolumeX,
-  Settings,
-  Maximize,
-  Minimize
+  Settings
 } from 'lucide-react';
 import { Recipe } from '../../types';
 import { useTheme } from '../../context/ThemeContext';
+
 interface RecipeVideoProps {
   recipe: Recipe;
 }
@@ -31,8 +30,7 @@ interface VideoState {
 
 const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
   const { theme } = useTheme();
-
-  const playerRef = useRef<any>(null);
+  const playerRef = useRef<ReactPlayer>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -74,11 +72,17 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
       const currentTime = videoState.played * videoState.duration;
       const newTime = Math.max(0, Math.min(videoState.duration, currentTime + seconds));
       const seekTo = newTime / videoState.duration;
-      
+
       setVideoState(prev => ({ ...prev, played: seekTo }));
       playerRef.current.seekTo(seekTo);
     }
   }, [videoState.played, videoState.duration]);
+
+  const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const played = parseFloat(e.target.value);
+    setVideoState(prev => ({ ...prev, played }));
+    playerRef.current?.seekTo(played);
+  };
 
   const handleFullscreen = useCallback(() => {
     if (!document.fullscreenElement && containerRef.current) {
@@ -94,11 +98,9 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
 
   const handleMouseMove = useCallback(() => {
     setVideoState(prev => ({ ...prev, showControls: true }));
-    
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current);
     }
-    
     if (videoState.playing) {
       controlsTimeoutRef.current = setTimeout(() => {
         setVideoState(prev => ({ ...prev, showControls: false }));
@@ -211,63 +213,14 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
   }, [videoState.fullscreen, handlePlayPause, handleSkip, handleMute, handleFullscreen]);
 
   if (!recipe.videoUrl || !ReactPlayer.canPlay(recipe.videoUrl)) {
-    return (
-      <div>
-        <div className={`aspect-w-16 aspect-h-9 mb-6 rounded-lg flex items-center justify-center ${
-          theme === 'dark' ? 'bg-gray-700' : 'bg-gray-200'
-        }`}>
-          <div className="text-center p-4">
-            <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center mx-auto mb-4">
-              <Play className="h-8 w-8 text-white ml-1" />
-            </div>
-            <p className={`text-lg font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
-              Video demonstration for {recipe.name}
-            </p>
-            <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-              (Video would play here in the actual application)
-            </p>
-          </div>
-        </div>
-        
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-bold text-xl mb-4">Key Steps</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[1, 2, 3].map((step) => (
-                <div key={step} className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-                  <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold mb-3">
-                    {step}
-                  </div>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                    {recipe.instructions[step - 1] || `Step ${step} instructions would be displayed here.`}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="font-bold text-xl mb-4">Chef's Tips</h3>
-            <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
-              <p className={`text-sm ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                • Make sure to use fresh ingredients for the best flavor.<br />
-                • You can adjust the spiciness according to your preference.<br />
-                • This dish pairs well with a side of rice or plantains.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <div>Video unavailable</div>;
   }
 
   return (
     <div className="space-y-6">
       <div 
         ref={containerRef}
-        className={`relative rounded-lg overflow-hidden ${
-          videoState.fullscreen ? 'fixed inset-0 z-50 rounded-none' : ''
-        } ${theme === 'dark' ? 'bg-gray-900' : 'bg-black'}`}
+        className={`relative rounded-lg overflow-hidden ${videoState.fullscreen ? 'fixed inset-0 z-50 rounded-none' : ''} ${theme === 'dark' ? 'bg-gray-900' : 'bg-black'}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => {
           if (!videoState.fullscreen) {
@@ -293,20 +246,8 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
             onEnded={handleEnded}
             onError={handleError}
             config={{
-              youtube: {
-                playerVars: {
-                  showinfo: 0,
-                  controls: 0,
-                  modestbranding: 1,
-                  rel: 0,
-                  iv_load_policy: 3
-                }
-              },
-              vimeo: {
-                playerOptions: {
-                  controls: false
-                }
-              }
+              youtube: { playerVars: { showinfo: 0, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3 } },
+              vimeo: { playerOptions: { controls: false } }
             }}
           />
 
@@ -328,40 +269,60 @@ const RecipeVideo: React.FC<RecipeVideoProps> = ({ recipe }) => {
           )}
 
           <div 
-            className={`absolute bottom-0 left-0 right-0 p-2 bg-black/50 flex items-center justify-between ${
-              videoState.showControls ? 'opacity-100' : 'opacity-0'
-            } transition-opacity duration-300`}
+            className={`absolute bottom-0 left-0 right-0 p-2 bg-black/50 flex flex-col space-y-2 ${videoState.showControls ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
           >
-            <div className="flex items-center">
-              <button className="p-2" onClick={handlePlayPause}>
-                {videoState.playing ? <Pause className="h-6 w-6 text-white" /> : <Play className="h-6 w-6 text-white" />}
-              </button>
-              <input 
-                type="range" 
-                min="0" 
-                max="1" 
-                step="0.01" 
-                value={videoState.volume} 
-                onChange={handleVolumeChange} 
-                className="w-24"
-              />
-              <button className="p-2" onClick={handleMute}>
-                {videoState.muted ? <VolumeX className="h-6 w-6 text-white" /> : <Volume2 className="h-6 w-6 text-white" />}
-              </button>
-              <button className="p-2" onClick={() => setShowSettings(!showSettings)}>
-                <Settings className="h-6 w-6 text-white" />
-              </button>
-              <button className="p-2" onClick={handleFullscreen} aria-label="Toggle Fullscreen">
-                {videoState.fullscreen ? (
-                  <Minimize className="h-6 w-6 text-white" />
-                ) : (
-                  <Maximize className="h-6 w-6 text-white" />
-                )}
-              </button>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step="0.01"
+              value={videoState.played}
+              onChange={handleSeekChange}
+              className="w-full h-1 bg-orange-500 rounded"
+            />
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <button className="p-2" onClick={handlePlayPause}>
+                  {videoState.playing ? <Pause className="h-6 w-6 text-white" /> : <Play className="h-6 w-6 text-white" />}
+                </button>
+
+                <button
+                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center text-sm font-semibold transition"
+                  onClick={() => handleSkip(-10)}
+                >
+                  -10
+                </button>
+
+                <button
+                  className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center text-sm font-semibold transition"
+                  onClick={() => handleSkip(10)}
+                >
+                  +10
+                </button>
+
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={videoState.volume}
+                  onChange={handleVolumeChange}
+                  className="w-24"
+                />
+                <button className="p-2" onClick={handleMute}>
+                  {videoState.muted ? <VolumeX className="h-6 w-6 text-white" /> : <Volume2 className="h-6 w-6 text-white" />}
+                </button>
+                <button className="p-2" onClick={() => setShowSettings(!showSettings)}>
+                  <Settings className="h-6 w-6 text-white" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-};export default RecipeVideo;
+};
+
+export default RecipeVideo;
