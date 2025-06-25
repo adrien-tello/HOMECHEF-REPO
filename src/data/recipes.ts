@@ -418,7 +418,7 @@ export const mockRecipes: Recipe[] = [
     prepTime: 20,
     cookTime: 30,
     servings: 6,
-    difficulty: 'hard',
+    difficulty: 'easy',
     ingredients: [
       { id: '1', name: ' fish (for me catfish)', quantity: 1, unit: 'kg' },
       { id: '2', name: ' Njansan', quantity: 50, unit: 'g' },
