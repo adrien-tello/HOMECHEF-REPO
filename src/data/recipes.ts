@@ -210,7 +210,11 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '7',
+<<<<<<< Updated upstream
     name: 'Piller Pomme',
+=======
+    name: 'Pound Potatoes',
+>>>>>>> Stashed changes
     description: 'This delicious dish comes to us from western Cameroon. A succulent mixture of potatoes and beans.',
     imageUrl: 'https://i.pinimg.com/736x/53/48/1b/53481b7c770aba2e367212a6cafe8943.jpg',
     videoUrl: 'https://youtu.be/yvPqncJkVT4',
@@ -497,7 +501,11 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '15',
+<<<<<<< Updated upstream
     name: 'Roasted Fish',
+=======
+    name: 'Roasted fish',
+>>>>>>> Stashed changes
     description: 'A typical Cameroonian recipe: roasted fish, quick and easy to make.',
     imageUrl: 'https://i.pinimg.com/736x/d3/c2/05/d3c205ff61b5ff713ab817619822f6ae.jpg',
     videoUrl: 'https://youtu.be/einMc2In9g8',
@@ -565,8 +573,13 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '17',
+<<<<<<< Updated upstream
     name: 'Donut porridge beans',
     description: 'Donut porridge beans," often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
+=======
+    name: 'BHB',
+    description: '"Beignets haricot bouillie," often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
+>>>>>>> Stashed changes
     imageUrl: 'https://i.pinimg.com/736x/96/4a/1d/964a1d512bd49ad89e42e14cb45add10.jpg',
     videoUrl: 'https://youtu.be/SWfcv0LuxPI',
     prepTime: 60,
