@@ -1,6 +1,7 @@
 export interface Recipe {
   id: string;
   name: string;
+  region: string;
   description: string;
   imageUrl: string;
   videoUrl: string;
@@ -12,6 +13,7 @@ export interface Recipe {
   instructions: string[];
   variations?: Recipe[];
   similar?: Recipe[];
+  image: string;
 }
 
 export interface Ingredient {
