@@ -565,12 +565,12 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '17',
-    name: 'BHB',
-    description: '"Beignets haricot bouillie," often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
+    name: 'Donut porridge beans',
+    description: 'Donut porridge beans," often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
     imageUrl: 'https://i.pinimg.com/736x/96/4a/1d/964a1d512bd49ad89e42e14cb45add10.jpg',
     videoUrl: 'https://youtu.be/SWfcv0LuxPI',
-    prepTime: 15,
-    cookTime: 30,
+    prepTime: 60,
+    cookTime: 180,
     servings: 8,
     difficulty: 'easy',
     ingredients: [
