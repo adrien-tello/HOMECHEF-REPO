@@ -376,7 +376,7 @@ export const mockRecipes: Recipe[] = [
   },
   {
     id: '12',
-    name: 'legumes saute and ripe plantains',
+    name: 'vegetables sauté and ripe plantains',
     description: 'Sautéed vegetables in Cameroon, also called "folon," "zom," or "djap," are a traditional dish made with green vegetables, usually prepared with onions, tomatoes, and various spices. This dish is popular in several regions of Cameroon, but is particularly appreciated in areas where green vegetables are abundant.',
     imageUrl: 'https://i.pinimg.com/736x/28/b3/a5/28b3a5a52e7185791723f97e582a208b.jpg',
     videoUrl: 'https://youtu.be/KrZ2Y49NGNU',
