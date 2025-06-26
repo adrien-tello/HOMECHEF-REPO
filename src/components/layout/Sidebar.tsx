@@ -58,7 +58,9 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
             <div className={`rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2 ${
               theme === 'dark' ? 'bg-orange-500' : 'bg-orange-100'
             }`}>
-              <span className="text-2xl">🍲</span>
+              <span className="text-2xl">
+                <img src="/src/assets/HomeChef_Logo.png" alt="HomeChef Logo" />
+              </span>
             </div>
             <h2 className="text-xl font-bold text-center">HomeChef</h2>
           </div>
@@ -73,7 +75,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
                     className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
                       isActive(item.path)
                         ? 'bg-orange-500 text-white'
-                        : `${theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-100'}`
+                        : `${theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-900'}`
                     }`}
                   >
                     <span className="mr-3">{item.icon}</span>
@@ -88,7 +90,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
             <button
               onClick={toggleTheme}
               className={`flex w-full items-center px-3 py-2 rounded-lg transition-colors ${
-                theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-100'
+                theme === 'dark' ? 'hover:bg-gray-700' : 'hover:bg-orange-900'
               }`}
             >
               <span className="mr-3">
