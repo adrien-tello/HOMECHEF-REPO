@@ -44,11 +44,11 @@ const EventPage = () => {
     // Theme-based colors
     const isLight = theme === 'light';
     const bgColor = isLight ? 'bg-[#FFF8F0]' : 'bg-[##111827]';
-    const textColor = isLight ? 'text-[#5C4033]' : 'text-[#F5F5F5]';
-    const primaryColor = isLight ? '#F97316' : '#f97316';
+    const textColor = isLight ? 'text-[#FFFFFF]' : 'text-[#F5F5F5]';
+    const primaryColor = isLight ? '#622A0F' : '#622A0F';
     const cardBg = isLight ? 'bg-white' : 'bg-[#374151]';
     const secondaryText = isLight ? 'text-[#A0522D]' : 'text-[#FFFFFF]';
-    const borderColor = isLight ? 'border-[#F97316]' : 'border-[#FFB347]';
+    const borderColor = isLight ? 'border-[#622A0F]' : 'border-[#FFB347]';
 
     if (loading) {
         return (
@@ -103,19 +103,19 @@ const EventPage = () => {
                         <CalendarCheck size={28} /> Upcoming Sneak Peek
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-[#f97316] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="bg-[#622A0F] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <h4 className="text-xl font-semibold mb-2">Recipe Battles</h4>
                             <p>Compete against fellow chefs to create the best version of Cameroonian classics. Win prizes and earn bragging rights!</p>
                         </div>
-                        <div className="bg-[#f97316] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="bg-[#622A0F] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <h4 className="text-xl font-semibold mb-2">Live Cooking Challenges</h4>
                             <p>Join live events where surprise ingredients are revealed, and contestants create magic on the spot — streamed for all to see!</p>
                         </div>
-                        <div className="bg-[#f97316] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="bg-[#622A0F] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <h4 className="text-xl font-semibold mb-2">Community Votes</h4>
                             <p>Let the HomeChef community vote for their favorite recipes, presentation, and creativity — your fans will help you win!</p>
                         </div>
-                        <div className="bg-[#f97316] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div className="bg-[#622A0F] p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                             <h4 className="text-xl font-semibold mb-2">Mystery Box</h4>
                             <p>Take part in mystery box challenges where you must prepare unique dishes from surprise ingredient combinations!</p>
                         </div>
@@ -158,7 +158,7 @@ const EventPage = () => {
             <div className={`mt-20 bg-[${primaryColor}] text-white rounded-xl p-8 text-center`}>
                 <h3 className="text-3xl font-bold mb-4">Partner with HomeChef Events</h3>
                 <p className="mb-6">Are you a sponsor, chef, or event organizer? Join us to host Cameroon’s biggest food festivals and competitions.</p>
-                <button className="bg-white text-[#F97316] font-bold px-8 py-3 rounded-full text-lg hover:scale-105 transition-transform">
+                <button className="bg-white text-[#622A0F] font-bold px-8 py-3 rounded-full text-lg hover:scale-105 transition-transform">
                     Contact Us
                 </button>
             </div>

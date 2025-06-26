@@ -22,7 +22,9 @@ const AboutUs = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
           <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-            <span className="text-2xl">🍲</span>
+            <span className="text-2xl">
+              <img src="/src/assets/HomeChef_Logo.png" alt="HomeChef Logo" />
+            </span>
           </div>
           <h2 className="text-xl font-bold mb-2">Cultural Preservation</h2>
           <p>
@@ -125,14 +127,14 @@ const AboutUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
             <h3 className="font-bold mb-2">Email</h3>
-            <p>contact@homechef-cameroon.com</p>
+            <p>homechefcm@gmail.com</p>
           </div>
 
           <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-orange-50'}`}>
             <h3 className="font-bold mb-2">Social Media</h3>
             <div className="flex space-x-4">
               <a href="#" className="text-orange-500 hover:text-orange-600 transition-colors">Instagram</a>
-              <a href="#" className="text-orange-500 hover:text-orange-600 transition-colors">Facebook</a>
+              <a href="https://www.facebook.com/profile.php?id=61577428153989" className="text-orange-500 hover:text-orange-600 transition-colors">Facebook</a>
               <a href="#" className="text-orange-500 hover:text-orange-600 transition-colors">Twitter</a>
             </div>
           </div>
