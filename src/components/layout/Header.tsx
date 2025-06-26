@@ -14,15 +14,17 @@ const Header = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="bg-gradient-to-r #b64e21 to-orange-500 text-white shadow-md sticky top-0 z-50">
+   <header className="text-white shadow-md sticky top-0 z-50"
+    style={{background: 'linear-gradient(to right,rgb(107, 52, 23)'}}>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-
         <div className="flex items-center gap-2">
           <button className="md:hidden text-white" onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
           <Link to="/" className="text-2xl font-bold flex items-center">
-            <span className="mr-2">🍲</span>
+            <span className="mr-2">
+               <img src="/src/assets/HomeChef_Logo.png" alt="logo" width={100}
+            </span>
             <img src="path/to/logo.png" alt="HomeChef Logo" className="h-8" />
           </Link>
         </div>
