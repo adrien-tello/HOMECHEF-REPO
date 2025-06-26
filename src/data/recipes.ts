@@ -145,7 +145,7 @@ export const mockRecipes: Recipe[] = [
     id: '5',
     name: 'Jollof Rice',
     description: 'Cameroonian-style jollof rice cooked with tomatoes, peppers, and aromatic spices.',
-    imageUrl: 'https://images.pexels.com/photos/11899540/pexels-photo-11899540.jpeg',
+    imageUrl: 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2022/08/01/jollof-rice-on-blue-and-white-plate.jpg.rend.hgtvcom.616.462.85.suffix/1659375750019.webp',
     videoUrl: 'https://example.com/jollof-video.mp4',
     prepTime: 20,
     cookTime: 45,

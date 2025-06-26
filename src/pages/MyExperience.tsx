@@ -1,38 +1,10 @@
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { useCookingExperience } from '../context/CookingExperienceContext';
-import { Calendar, Star, Clock, Users, DollarSign } from 'lucide-react';
+import { Calendar, Star, Clock } from 'lucide-react';
 
 const MyExperience = () => {
   const { theme } = useTheme();
-  const { experiences } = useCookingExperience();
-
-  const StarDisplay = ({ rating }: { rating?: number }) => {
-    if (!rating) return null;
-    
-    return (
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            size={16}
-            className={star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
-          />
-        ))}
-        <span className="ml-1 text-sm text-gray-500">({rating}/5)</span>
-      </div>
-    );
-  };
-
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
-  };
+  const [experiences, setExperiences] = useState<any[]>([]);
 
   return (
     <div className="container mx-auto">
@@ -76,71 +48,7 @@ const MyExperience = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          {experiences.map((experience) => (
-            <div key={experience.id} className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
-              <div className="flex items-start space-x-4">
-                <img 
-                  src={experience.recipe.imageUrl} 
-                  alt={experience.recipe.name}
-                  className="w-20 h-20 rounded-lg object-cover"
-                />
-                
-                <div className="flex-1">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold mb-1">{experience.recipe.name}</h3>
-                      <div className="flex items-center space-x-4 text-sm text-gray-500 mb-2">
-                        <div className="flex items-center">
-                          <Calendar size={14} className="mr-1" />
-                          {experience.cookedAt.toLocaleDateString()}
-                        </div>
-                        <div className="flex items-center">
-                          <Users size={14} className="mr-1" />
-                          {experience.people} people
-                        </div>
-                        <div className="flex items-center">
-                          <Clock size={14} className="mr-1" />
-                          {experience.adjustedTime} mins
-                        </div>
-                        <div className="flex items-center">
-                          <DollarSign size={14} className="mr-1" />
-                          ${experience.estimatedCost.toFixed(2)}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {experience.rating && (
-                      <div className="text-right">
-                        <StarDisplay rating={experience.rating} />
-                      </div>
-                    )}
-                  </div>
-                  
-                  {experience.notes && (
-                    <div className={`mt-3 p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
-                      <p className="text-sm">
-                        <strong>Notes:</strong> {experience.notes}
-                      </p>
-                    </div>
-                  )}
-                  
-                  <div className="mt-3 flex items-center justify-between">
-                    <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
-                      Cooked {experience.frequency} time{experience.frequency !== 1 ? 's' : ''}
-                    </span>
-                    
-                    <span className={`px-2 py-1 rounded-full text-xs ${
-                      experience.recipe.difficulty === 'easy' ? 'bg-green-100 text-green-800' :
-                      experience.recipe.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-red-100 text-red-800'
-                    }`}>
-                      {experience.recipe.difficulty}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          {/* Experience entries would go here */}
         </div>
       )}
       

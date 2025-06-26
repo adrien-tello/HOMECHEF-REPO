@@ -22,19 +22,11 @@ const RecipeOfDay = () => {
     "Mbongo tchobi is a spicy black soup made with a specific type of bark that gives it the distinctive color.",
     "In many Cameroonian households, cooking is considered an art form passed down through generations.",
     "Cameroon has over 250 ethnic groups, each with their own culinary traditions.",
-    "Pepper soup is a popular medicinal dish believed to cure colds and flu.",
-    "Water fufu and eru is so beloved among Cameroonians abroad that its even cooked in big restaurants in UK and US",
-    "Some meals like Achu soup are traditionally prepared only by men in some ethnic groups",
-    "Some communities use red oil as seasoning not just cooking oil",
-    "koki is steamed in banana leaves just like temales or Asian dumplings",
-    "Cameroon has morethan 250 ethnic groups-and each has unique recipes",
-    "Traditional cameroon cooks often dont use measuring cups",
-    "Some cameroonian tribes beleive that eating snails increaseswisdom and patience",
-    "Cameroon is said to be a continent ☻☻",
+    "Pepper soup is a popular medicinal dish believed to cure colds and flu."
   ];
 
   useEffect(() => {
-    // Simulate data fetching
+
     const fetchRecipeOfDay = async () => {
       setLoading(true);
       setTimeout(() => {

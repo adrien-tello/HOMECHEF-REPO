@@ -13,31 +13,37 @@ import MyExperience from './pages/MyExperience';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import RecipeOfDay from './pages/RecipeOfDay';
-import { CookingExperienceProvider } from './context/CookingExperienceContext';
+import Landing from './pages/Landing';
+import ForgotPassword from './pages/ForgotPassword';
+import SearchPage from './pages/SearchPage';
+import EventPage from './pages/Events';
+
 
 function App() {
   return (
     <ThemeProvider>
-      <CookingExperienceProvider>
-        <LanguageProvider>
-          <AuthProvider>
-            <Router>
-              <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route element={<Layout />}>
-                  <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-                  <Route path="/recipe/:id" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
-                  <Route path="/my-recipes" element={<ProtectedRoute><MyRecipes /></ProtectedRoute>} />
-                  <Route path="/about-us" element={<ProtectedRoute><AboutUs /></ProtectedRoute>} />
-                  <Route path="/my-experience" element={<ProtectedRoute><MyExperience /></ProtectedRoute>} />
-                  <Route path="/recipe-of-day" element={<ProtectedRoute><RecipeOfDay /></ProtectedRoute>} />
-                </Route>
-              </Routes>
-            </Router>
-          </AuthProvider>
-        </LanguageProvider>
-      </CookingExperienceProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/forgot" element={<ForgotPassword />} />
+              <Route element={<Layout />}>
+                <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                <Route path="/recipe/:id" element={<ProtectedRoute><RecipeDetail /></ProtectedRoute>} />
+                <Route path="/my-recipes" element={<ProtectedRoute><MyRecipes /></ProtectedRoute>} />
+                <Route path="/about-us" element={<ProtectedRoute><AboutUs /></ProtectedRoute>} />
+                <Route path="/my-experience" element={<ProtectedRoute><MyExperience /></ProtectedRoute>} />
+                <Route path="/recipe-of-day" element={<ProtectedRoute><RecipeOfDay /></ProtectedRoute>} />
+                <Route path="/Events" element={<ProtectedRoute><EventPage /></ProtectedRoute>} />
+              </Route>
+            </Routes>
+          </Router>
+        </AuthProvider>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }
