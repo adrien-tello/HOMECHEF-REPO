@@ -1,13 +1,54 @@
-import { useState } from 'react';
+
 import { useTheme } from '../context/ThemeContext';
-import { Calendar, Star, Clock } from 'lucide-react';
+import { useCookingExperience } from '../context/CookingExperienceContext';
+import { Calendar, Star, Clock, Users, DollarSign } from 'lucide-react';
 
 const MyExperience = () => {
   const { theme } = useTheme();
-  const [experiences, setExperiences] = useState<any[]>([]);
+  const { experiences, loading } = useCookingExperience();
+
+  const StarDisplay = ({ rating }: { rating?: number }) => {
+    if (!rating) return null;
+    
+    return (
+      <div className="flex items-center space-x-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            size={16}
+            className={star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}
+          />
+        ))}
+        <span className="ml-1 text-sm text-gray-500">({rating}/5)</span>
+      </div>
+    );
+  };
+
+  const formatDate = (date: Date | string) => {
+    const dateObj = date instanceof Date ? date : new Date(date);
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(dateObj);
+  };
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4">
+        <h1 className="text-3xl font-bold mb-2">My Cooking Experience</h1>
+        <div className="flex items-center justify-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+          <span className="ml-4">Loading your cooking experiences...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <h1 className="text-3xl font-bold mb-2">My Cooking Experience</h1>
       <p className={theme === 'dark' ? 'text-gray-300 mb-8' : 'text-gray-600 mb-8'}>
         Keep track of all the Cameroonian recipes you've cooked and your notes
@@ -48,7 +89,71 @@ const MyExperience = () => {
         </div>
       ) : (
         <div className="space-y-6">
-          {/* Experience entries would go here */}
+          {experiences.map((experience: any) => (
+            <div key={experience.id} className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
+              <div className="flex items-start space-x-4">
+                <img
+                  src={experience.recipe?.imageUrl || '/placeholder-image.jpg'}
+                  alt={experience.recipe?.name || 'Recipe'}
+                  className="w-20 h-20 rounded-lg object-cover"
+                />
+                
+                <div className="flex-1">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">{experience.recipe?.name || 'Unknown Recipe'}</h3>
+                      <div className="flex items-center space-x-4 text-sm text-gray-500 mb-2">
+                        <div className="flex items-center">
+                          <Calendar size={14} className="mr-1" />
+                          {formatDate(experience.cookedAt || experience.dateCooked || new Date())}
+                        </div>
+                        <div className="flex items-center">
+                          <Users size={14} className="mr-1" />
+                          {experience.people || experience.recipe?.servings || 1} people
+                        </div>
+                        <div className="flex items-center">
+                          <Clock size={14} className="mr-1" />
+                          {experience.adjustedTime || (experience.recipe ? experience.recipe.prepTime + experience.recipe.cookTime : 0)} mins
+                        </div>
+                        <div className="flex items-center">
+                          <DollarSign size={14} className="mr-1" />
+                          ${experience.estimatedCost?.toFixed(2) || '0.00'}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {experience.rating && (
+                      <div className="text-right">
+                        <StarDisplay rating={experience.rating} />
+                      </div>
+                    )}
+                  </div>
+                  
+                  {experience.notes && (
+                    <div className={`mt-3 p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}>
+                      <p className="text-sm">
+                        <strong>Notes:</strong> {experience.notes}
+                      </p>
+                    </div>
+                  )}
+                  
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                      Cooked {experience.frequency || 1} time{(experience.frequency || 1) !== 1 ? 's' : ''}
+                    </span>
+                    
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      experience.recipe?.difficulty === 'easy' ? 'bg-green-100 text-green-800' :
+                      experience.recipe?.difficulty === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                      'bg-red-100 text-red-800'
+                    }`}>
+                      {experience.recipe?.difficulty || 'unknown'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       )}
       
