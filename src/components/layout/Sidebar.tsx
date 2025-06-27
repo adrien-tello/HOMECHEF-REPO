@@ -59,7 +59,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
               theme === 'dark' ? 'bg-orange-900' : 'bg-orange-900'
             }`}>
               <span className="text-2xl">
-                <img src="https://github.com/adrien-tello/HOMECHEF-REPO/blob/main/src/assets/HomeChef_Logo.png" alt="HomeChef Logo" />
+                <img src="https://i.pinimg.com/736x/21/0e/c3/210ec3ca4b2999d93f98c35208f97254.jpg" alt="HomeChef Logo" />
               </span>
             </div>
             <h2 className="text-xl font-bold text-center">HomeChef</h2>
