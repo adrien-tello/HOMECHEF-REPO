@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Translation content
+
 const translations = {
   en: {
     home: "Home",
@@ -19,9 +19,9 @@ const translations = {
     vision: "Our Vision",
     visionText: "HomeChef aims to make every Cameroonian kitchen, whether in Cameroon or the diaspora, a place of cultural pride and delicious mastery of our traditional cuisine.",
     history: "Our History",
-    historyText: "Founded in 2022 with passion for food and culture, HomeChef is built by and for Cameroonians, combining traditional knowledge with modern cooking techniques.",
+    historyText: "Founded in 2025 with passion for food and culture, HomeChef is built by and for Cameroonians, combining traditional knowledge with modern cooking techniques.",
     team: "Our Team",
-    teamText: "A diverse mix of professional chefs, home cooks, developers, and food enthusiasts sharing one vision — authentic Cameroonian taste, beautifully served.",
+    teamText: "A diverse mix of amateurs, home cooks, developers, and food enthusiasts sharing one vision — authentic Cameroonian taste, beautifully served.",
     menuHighlights: "Popular Dishes",
     freshDishes: "🥘 Fresh Dishes",
     localRecipes: "🍛 Traditional Recipes",
@@ -34,9 +34,7 @@ const translations = {
     ingredients: "Ingredients",
     difficulty: "Difficulty",
     viewRecipe: "View Recipe",
-    testimonials: "What Our Users Say",
-    newsletter: "Get Weekly Recipes",
-    newsletterPlaceholder: "Your email address",
+    testimonials: "What do the developes have as message?",
     subscribe: "Subscribe",
     culturalHeritage: "Celebrating Cameroon's Culinary Heritage",
     regions: "Explore by Region",
@@ -57,7 +55,7 @@ const translations = {
     vision: "Notre Vision",
     visionText: "HomeChef vise à faire de chaque cuisine camerounaise, qu'elle soit au Cameroun ou dans la diaspora, un lieu de fierté culturelle et de maîtrise délicieuse de notre cuisine traditionnelle.",
     history: "Notre Histoire",
-    historyText: "Fondée en 2022 avec une passion pour la nourriture et la culture, HomeChef est construite par et pour les Camerounais, combinant les connaissances traditionnelles avec les techniques de cuisine modernes.",
+    historyText: "Fondée en 2025 avec une passion pour la nourriture et la culture, HomeChef est construite par et pour les Camerounais, combinant les connaissances traditionnelles avec les techniques de cuisine modernes.",
     team: "Notre Équipe",
     teamText: "Un mélange diversifié de chefs professionnels, de cuisiniers à domicile, de développeurs et d'enthousiastes de la nourriture partageant une vision commune - le goût authentique camerounais, magnifiquement servi.",
     menuHighlights: "Plats Populaires",
@@ -72,7 +70,7 @@ const translations = {
     ingredients: "Ingrédients",
     difficulty: "Difficulté",
     viewRecipe: "Voir la Recette",
-    testimonials: "Témoignages",
+    testimonials: "Témoignages des developers",
     newsletter: "Recevez des Recettes Hebdomadaires",
     newsletterPlaceholder: "Votre adresse email",
     subscribe: "S'abonner",
@@ -134,7 +132,7 @@ const popularDishes = [
   }
 ];
 
-// Regions data
+
 const regions = [
   {
     nameEn: "Coastal",
@@ -148,7 +146,7 @@ const regions = [
     nameFr: "Grassfields",
     dishesEn: "Achu, Nkui, Kwacoco",
     dishesFr: "Achu, Nkui, Kwacoco",
-    image: "https://www.196flavors.com/wp-content/uploads/2022/03/achu-soup-1-FP.jpg"
+    image: "https://cookingwithclaudy.com/wp-content/uploads/2024/05/20240521_163526.jpg"
   },
   {
     nameEn: "Forest",
@@ -162,29 +160,29 @@ const regions = [
     nameFr: "Nord",
     dishesEn: "Hausa Koko, Suya, Kilishi",
     dishesFr: "Hausa Koko, Suya, Kilishi",
-    image: "https://www.africanbites.com/wp-content/uploads/2013/03/IMG_9258.jpg"
+    image: "https://greenbaskit.com/wp-content/uploads/2023/11/Ram-Kilishi.jpg"
   }
 ];
 
-// Testimonials
+
 const testimonials = [
   {
     quoteEn: "HomeChef helped me reconnect with my Cameroonian roots through food. The recipes are authentic and easy to follow!",
     quoteFr: "HomeChef m'a aidé à me reconnecter avec mes racines camerounaises à travers la nourriture. Les recettes sont authentiques et faciles à suivre !",
-    name: "Marie T.",
-    location: "Douala, Cameroon"
+    name: "Yemeli Tane.",
+    location: "Yaounde, Cameroon"
   },
   {
-    quoteEn: "As a Cameroonian living abroad, this site brings the taste of home to my kitchen. The video tutorials are especially helpful.",
-    quoteFr: "En tant que Camerounais vivant à l'étranger, ce site apporte le goût de la maison dans ma cuisine. Les tutoriels vidéo sont particulièrement utiles.",
-    name: "Jean P.",
-    location: "Paris, France"
+    quoteEn: "This site brings the taste of home to my kitchen. The video tutorials are especially helpful.",
+    quoteFr: "Ce site apporte le goût de la maison dans ma cuisine. Les tutoriels vidéo sont particulièrement utiles.",
+    name: "Mikey Jovany.",
+    location: "Yaounde, Cameroon"
   },
   {
-    quoteEn: "I'm not Cameroonian but fell in love with the cuisine. HomeChef makes these complex flavors accessible to anyone.",
-    quoteFr: "Je ne suis pas camerounais mais je suis tombé amoureux de la cuisine. HomeChef rend ces saveurs complexes accessibles à tous.",
-    name: "Sarah K.",
-    location: "New York, USA"
+    quoteEn: "As a Cameroonian, I believe conserving our culture should be my aim, and I believe that you can be part of it.",
+    quoteFr: "En tant que Camerounais, je crois que preserver notre culture et mon but, a moi, et a nous tous.",
+    name: "Yann Aymerick",
+    location: "Yaounde, Cameroon"
   }
 ];
 
@@ -266,13 +264,7 @@ const Landing: React.FC = () => {
     }
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(language === 'en' 
-      ? `Thank you for subscribing with ${email}! Weekly recipes coming your way.` 
-      : `Merci de vous être abonné avec ${email} ! Des recettes hebdomadaires vous parviendront.`);
-    setEmail('');
-  };
+
 
   const features = [
     {
@@ -485,7 +477,7 @@ const Landing: React.FC = () => {
             className="mt-8 md:mt-0"
           >
             <img
-              src="https://i.pinimg.com/736x/6a/51/ff/6a51ffd982b90371490d429607ea199e.jpg"
+              src="https://i.pinimg.com/736x/ce/21/5d/ce215ddf78969606864fd88a705e4dc7.jpg"
               alt={language === 'en' ? "A table with Cameroonian dishes" : "Une table avec des plats camerounais"}
               className="w-full rounded-2xl shadow-xl border-4 border-white"
               loading="lazy"
@@ -494,7 +486,7 @@ const Landing: React.FC = () => {
         </div>
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://i.pinimg.com/736x/6a/51/ff/6a51ffd982b90371490d429607ea199e.jpg" 
+            src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg"
             alt="Background" 
             className="w-full h-full object-cover"
           />
@@ -760,24 +752,7 @@ const Landing: React.FC = () => {
               : "Rejoignez notre communauté et recevez des recettes camerounaises hebdomadaires dans votre boîte de réception !"}
           </p>
           
-          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={t.newsletterPlaceholder}
-              required
-              className="flex-grow px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-[#a45329]"
-            />
-            <motion.button
-              type="submit"
-              className="bg-[#a45329] text-white px-6 py-2 rounded hover:bg-[#8c4420] transition"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t.subscribe}
-            </motion.button>
-          </form>
+
         </div>
       </section>
 
@@ -812,7 +787,10 @@ const Landing: React.FC = () => {
             <div>
               <h3 className="text-lg font-bold mb-4">{t.contact}</h3>
               <ul className="space-y-2 text-sm">
-                <li><button onClick={() => scrollToSection('contact')} className="hover:underline">Email</button></li>
+                <li>
+                      <a href="homechefcm@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Email</a>
+                    </li>
+
                 <li><button onClick={() => scrollToSection('contact')} className="hover:underline">Social Media</button></li>
                 <li><button onClick={() => scrollToSection('contact')} className="hover:underline">Feedback</button></li>
               </ul>
