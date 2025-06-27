@@ -10,7 +10,10 @@ const Layout = () => {
 
   return (
     <div className={`min-h-screen flex flex-col ${theme === 'dark' ? 'dark bg-gray-900 text-white' : 'bg-orange-50 text-gray-900'}`}>
-      <Header/>
+      <Header
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       <div className="flex flex-1 relative">
         <Sidebar 
           isMobileMenuOpen={isMobileMenuOpen} 
