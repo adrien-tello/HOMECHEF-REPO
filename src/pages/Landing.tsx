@@ -485,9 +485,9 @@ const Landing: React.FC = () => {
           </motion.div>
         </div>
         <div className="absolute inset-0 z-0">
-          <img 
+          <img
             src="https://i.pinimg.com/736x/ce/21/5d/ce215ddf78969606864fd88a705e4dc7.jpg"
-            alt="Background" 
+            alt="Background"
             className="w-full h-full object-cover"
           />
         </div>
