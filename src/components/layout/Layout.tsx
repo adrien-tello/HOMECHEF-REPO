@@ -16,7 +16,7 @@ const Layout = () => {
           isMobileMenuOpen={isMobileMenuOpen} 
           setIsMobileMenuOpen={setIsMobileMenuOpen} 
         />
-        {/* Main content takes full width on mobile, leaves space for sidebar on desktop */}
+        {/* Main content takes full width on mobile, leaves space for sidebar on desktop and also for mobile */}
         <main className="flex-1 w-full md:ml-0 p-4 md:p-6 lg:p-8 overflow-auto transition-all">
           <Outlet />
         </main>

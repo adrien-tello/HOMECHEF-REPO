@@ -22,7 +22,7 @@ const Header = () => {
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
           <Link to="/" className="text-2xl font-bold flex items-center">
-            <span className="mr-2">🍲</span>
+            <span className="mr-2">☻☻</span>
             <img src="path/to/logo.png" alt="HomeChef Logo" className="h-8" />
           </Link>
         </div>

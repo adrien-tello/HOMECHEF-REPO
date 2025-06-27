@@ -27,7 +27,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
     { path: '/my-experience', icon: <History size={20} />, label: t('nav.myExperience') },
   ];
 
-  // Don't render sidebar at all on login/register pages
+  // Don't render sidebar at all on login/register pages for the moment
   if (location.pathname === '/login' || location.pathname === '/register') {
     return null;
   }
