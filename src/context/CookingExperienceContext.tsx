@@ -15,6 +15,7 @@ export interface CookingExperience {
 
 interface CookingExperienceContextType {
   experiences: CookingExperience[];
+  loading: boolean;
   addExperience: (experience: Omit<CookingExperience, 'id' | 'cookedAt'>) => void;
   updateExperience: (id: string, updates: Partial<CookingExperience>) => void;
 }
@@ -23,6 +24,7 @@ const CookingExperienceContext = createContext<CookingExperienceContextType | un
 
 export const CookingExperienceProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [experiences, setExperiences] = useState<CookingExperience[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const addExperience = (experienceData: Omit<CookingExperience, 'id' | 'cookedAt'>) => {
     const newExperience: CookingExperience = {
@@ -34,13 +36,20 @@ export const CookingExperienceProvider: React.FC<{ children: ReactNode }> = ({ c
   };
 
   const updateExperience = (id: string, updates: Partial<CookingExperience>) => {
-    setExperiences(prev => 
+
+    setExperiences(prev =>
       prev.map(exp => exp.id === id ? { ...exp, ...updates } : exp)
     );
   };
 
   return (
-    <CookingExperienceContext.Provider value={{ experiences, addExperience, updateExperience }}>
+
+    <CookingExperienceContext.Provider value={{ 
+      experiences, 
+      loading, 
+      addExperience, 
+      updateExperience 
+    }}>
       {children}
     </CookingExperienceContext.Provider>
   );
