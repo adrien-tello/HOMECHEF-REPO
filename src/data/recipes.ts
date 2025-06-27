@@ -1,5 +1,4 @@
-
-import { Recipe } from '../types';More actions
+import { Recipe } from '../types';
 
 export const mockRecipes: Recipe[] = [
   {
@@ -32,7 +31,9 @@ export const mockRecipes: Recipe[] = [
       'Add the washed bitter leaves and simmer for 30 minutes.',
       'Season with salt and pepper to taste.',
       'Serve hot with plantains or rice and also with cassava sticks.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '2',
@@ -71,7 +72,9 @@ export const mockRecipes: Recipe[] = [
       'Meanwhile, peel and fry the plantains until golden.',
       'Add the fried plantains to the chicken sauce.',
       'Garnish with chopped parsley and serve hot.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '3',
@@ -103,7 +106,9 @@ export const mockRecipes: Recipe[] = [
       'Cover and cook on low heat for 1 hour, stirring occasionally.',
       'Add water if necessary to prevent burning.',
       'Serve hot with fufu, water fufu, or garri.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '4',
@@ -140,7 +145,9 @@ export const mockRecipes: Recipe[] = [
       'Add the cooked meat and its stock, then simmer for 20 minutes.',
       'Season with salt to taste.',
       'Serve the yellow soup alongside the pounded achu.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '5',
@@ -177,7 +184,9 @@ export const mockRecipes: Recipe[] = [
       'Add chicken stock, cover, and cook on low heat for 30 minutes.',
       'Stir occasionally to prevent sticking.',
       'When the rice is cooked, fluff with a fork and serve hot.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '6',
@@ -207,7 +216,9 @@ export const mockRecipes: Recipe[] = [
       'Then gradually add the okok, stirring constantly, then the water, still stirring.',
       'Simmer over low heat for 2 minutes and remove from heat. It is ready!',
       'Serve with cassava tubers or cassava sticks.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '7',
@@ -243,7 +254,9 @@ export const mockRecipes: Recipe[] = [
       'I had reserved a few bean seeds to add at the end. This step is optional; it is just a matter of having the seeds unground. I mix everything together with a spatula.',
       'You can serve directly….',
       'or heat in a pan with the onions and a few drops of oil. After a few minutes, do not hesitate to turn with a spatula to grill the other side. Enjoy your meal!!!!!!'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '8',
@@ -277,7 +290,9 @@ export const mockRecipes: Recipe[] = [
       'Cook for 4 hours over medium heat or 1 hour in a pressure cooker.',
       'NB:The choice of palm oil is very important because this single ingredient can change the taste of the food',
       'you can serve it with ripe plantain or banana. Enjoy your food !!'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '9',
@@ -299,11 +314,11 @@ export const mockRecipes: Recipe[] = [
       { id: '7', name: 'Pepper', quantity: 2, unit: 'tbsp' },
       { id: '8', name: 'tomatoes', quantity: 3, unit: 'pieces' },
       { id: '9', name: 'Onion', quantity: 1, unit: 'piece' },
-      { id: '10',name: 'Ginger', quantity: 1, unit: 'cloves' },
-      { id: '11',name: 'Garlic', quantity: 5, unit: 'cloves' },
-      { id: '12',name: 'maggi', quantity: 2, unit: 'cubes' },// (optional)
-      { id: '13',name: 'Sprig chives', quantity: 1, unit: 'sprig' },
-      { id: '14',name: 'water', quantity: 4, unit: 'cup' },
+      { id: '10', name: 'Ginger', quantity: 1, unit: 'cloves' },
+      { id: '11', name: 'Garlic', quantity: 5, unit: 'cloves' },
+      { id: '12', name: 'maggi', quantity: 2, unit: 'cubes' }, // (optional)
+      { id: '13', name: 'Sprig chives', quantity: 1, unit: 'sprig' },
+      { id: '14', name: 'water', quantity: 4, unit: 'cup' },
     ],
     instructions: [
       'Prepare your ingredients. If the peanuts are not yet crushed, do so and peel the banana.',
@@ -314,38 +329,42 @@ export const mockRecipes: Recipe[] = [
       'After about 2 minutes, add the tomatoes and simmer for 5 minutes. Then add the fish water. The water you add at this stage will determine the amount of sauce you will have at the end of cooking. So do not hesitate to add more water',
       'When the water begins to boil, add the peanuts and stir well to prevent them from sticking to the bottom. Then add the previously mashed bananas and onions. Simmer over low heat for about 30 to 40 minutes. Stir every 10 minutes, as the peanuts burn quickly. Add water if necessary.',
       'Add salt and pepper. Serve hot. Enjoy your meal!!!',
-    ]
+    ],
+    region: '',
+    image: ''
   },
    {
-    id: '10',
-    name: 'Egusy pudding',
-    description: 'Today I present to you Pistachio Cake, also called Nnam Ngon in Beti in Cameroon or Pistachio, it is made from pumpkin seeds commonly called pistachio in sub-Saharan Africa.',
-    imageUrl: 'https://i.pinimg.com/736x/7d/fd/2e/7dfd2e9c1be6351c619a88a249832e30.jpg',
-    videoUrl: 'https://youtu.be/XsfiDAyEpLw',
-    prepTime: 45,
-    cookTime: 205,
-    servings: 5,
-    difficulty: 'medium',
-    ingredients: [
-      { id: '1', name: 'dried pumpkin seeds', quantity: 1, unit: 'kg' },
-      { id: '2', name: 'smoked fish', quantity: 3, unit: 'pieces' },
-      { id: '3', name: 'Water', quantity: 1, unit: 'l' },
-      { id: '4', name: 'Salt', quantity: 1, unit: 'tbsp' },
-      { id: '5', name: 'Banana leaves', quantity: 5, unit: 'pieces' },
-      { id: '6', name: 'Twines', quantity: 5, unit: 'peces' },
-    ],
-    instructions: [
-      'Prepare your banana leaves by soaking them for 5 minutes in boiling water to soften them.',
-      'Clean the fish (empty the insides, I also remove the skin) and soak them in warm water.',
-      'Finely crush the pumpkin seeds and place them in a bowl and pour in half of the water.',
-      'Add salt and gradually add the remaining water.',
-      'Drain the fish and pour it into the bowl containing the crush pumpkin paste.',
-      'Place your banana leaves over a bowl and place them crosswise on top of each other (4 leaves 2 crosses)',
-      'and pour a portion of dough into it, gather the ends in the center of the package and tie it with string.',
-      'Cook for 2 hours over medium heat or 45 minutes in a pressure cooker (the 45 minutes count from the time the pressure cooker whistles)',
-      'Ready Serve with cassava sticks or ripe plantain'
-    ]
-  },
+     id: '10',
+     name: 'Egusy pudding',
+     description: 'Today I present to you Pistachio Cake, also called Nnam Ngon in Beti in Cameroon or Pistachio, it is made from pumpkin seeds commonly called pistachio in sub-Saharan Africa.',
+     imageUrl: 'https://i.pinimg.com/736x/7d/fd/2e/7dfd2e9c1be6351c619a88a249832e30.jpg',
+     videoUrl: 'https://youtu.be/XsfiDAyEpLw',
+     prepTime: 45,
+     cookTime: 205,
+     servings: 5,
+     difficulty: 'medium',
+     ingredients: [
+       { id: '1', name: 'dried pumpkin seeds', quantity: 1, unit: 'kg' },
+       { id: '2', name: 'smoked fish', quantity: 3, unit: 'pieces' },
+       { id: '3', name: 'Water', quantity: 1, unit: 'l' },
+       { id: '4', name: 'Salt', quantity: 1, unit: 'tbsp' },
+       { id: '5', name: 'Banana leaves', quantity: 5, unit: 'pieces' },
+       { id: '6', name: 'Twines', quantity: 5, unit: 'peces' },
+     ],
+     instructions: [
+       'Prepare your banana leaves by soaking them for 5 minutes in boiling water to soften them.',
+       'Clean the fish (empty the insides, I also remove the skin) and soak them in warm water.',
+       'Finely crush the pumpkin seeds and place them in a bowl and pour in half of the water.',
+       'Add salt and gradually add the remaining water.',
+       'Drain the fish and pour it into the bowl containing the crush pumpkin paste.',
+       'Place your banana leaves over a bowl and place them crosswise on top of each other (4 leaves 2 crosses)',
+       'and pour a portion of dough into it, gather the ends in the center of the package and tie it with string.',
+       'Cook for 2 hours over medium heat or 45 minutes in a pressure cooker (the 45 minutes count from the time the pressure cooker whistles)',
+       'Ready Serve with cassava sticks or ripe plantain'
+     ],
+     region: '',
+     image: ''
+   },
   {
     id: '11',
     name: 'le sanga',
@@ -363,7 +382,6 @@ export const mockRecipes: Recipe[] = [
       { id: '4', name: 'water', quantity: 1, unit: 'l' },
       { id: '5', name: 'sugar', quantity: 200, unit: 'g' },
       { id: '6', name: 'Pepper', quantity: 2, unit: 'tsp' },
-
     ],
     instructions: [
       'Remove the zomba leaves from their stems. Chop them finely and wash them thoroughly.',
@@ -373,11 +391,13 @@ export const mockRecipes: Recipe[] = [
       'Boil the walnuts and pound them gently to obtain their pulp. Extract the juice by placing the pulp in a container with a medium amount of warm water, kneading it with your hands and straining, or purchase the ready-made pulp.',
       'Add the resulting juice to the mixture and stir vigorously with a spatula to obtain a homogeneous mixture. If you wish to add chili, add it at this point.',
       'Let it cook for 20 to 30 minutes, stirring constantly to prevent the mixture from sticking to the pan. When the mixture thickens, remove the pan from the heat, add sugar to taste, and serve.',
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '12',
-    name: 'vegetables sauté and ripe plantains',
+    name: 'vegetables Sauté and ripe plantain',
     description: 'Sautéed vegetables in Cameroon, also called "folon," "zom," or "djap," are a traditional dish made with green vegetables, usually prepared with onions, tomatoes, and various spices. This dish is popular in several regions of Cameroon, but is particularly appreciated in areas where green vegetables are abundant.',
     imageUrl: 'https://i.pinimg.com/736x/28/b3/a5/28b3a5a52e7185791723f97e582a208b.jpg',
     videoUrl: 'https://youtu.be/KrZ2Y49NGNU',
@@ -392,7 +412,7 @@ export const mockRecipes: Recipe[] = [
       { id: '4', name: 'carrot', quantity: 1, unit: 'piece' },
       { id: '5', name: 'vegetble oil', quantity: 100, unit: 'ml' },
       { id: '6', name: 'shrimp', quantity: 1, unit: 'handful' },
-      { id: '7', name: 'smoked fish', quantity: 1/2, unit: 'kg' },
+      { id: '7', name: 'smoked fish', quantity: 1 / 2, unit: 'kg' },
       { id: '8', name: 'salt', quantity: 1, unit: 'tbsp' },
       { id: '9', name: 'Grind pepper', quantity: 1, unit: 'tbsp' },
       { id: '10', name: 'Ripe plantain', quantity: 1, unit: 'kg' },
@@ -408,7 +428,9 @@ export const mockRecipes: Recipe[] = [
       'put the pantain on the fire and let it cook for about 15 minutes',
       'Serve the vegetables with the ripe plantain',
       'Enjoy your meal'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '13',
@@ -419,7 +441,7 @@ export const mockRecipes: Recipe[] = [
     prepTime: 20,
     cookTime: 30,
     servings: 6,
-    difficulty: 'easy',
+    difficulty: 'hard',
     ingredients: [
       { id: '1', name: ' fish (for me catfish)', quantity: 1, unit: 'kg' },
       { id: '2', name: ' Njansan', quantity: 50, unit: 'g' },
@@ -444,7 +466,9 @@ export const mockRecipes: Recipe[] = [
       'Check the sauce smoothness.',
       'Dilute with a little water if it is too thick.',
       ' Serve very hot with cassava or plantain'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '14',
@@ -494,11 +518,13 @@ export const mockRecipes: Recipe[] = [
       'Mix again, add 50ml of water and cook over very low heat for about 30 minutes, stirring frequently.',
       'Serve with grated macabo',
       'Enjoy your food'
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '15',
-    name: 'Roasted Fish',
+    name: 'Roasted fish',
     description: 'A typical Cameroonian recipe: roasted fish, quick and easy to make.',
     imageUrl: 'https://i.pinimg.com/736x/d3/c2/05/d3c205ff61b5ff713ab817619822f6ae.jpg',
     videoUrl: 'https://youtu.be/einMc2In9g8',
@@ -515,7 +541,7 @@ export const mockRecipes: Recipe[] = [
       { id: '6', name: 'garlic', quantity: 2, unit: 'cloves' },
       { id: '7', name: 'Red chili peppers', quantity: 5, unit: 'pieces' },
       { id: '8', name: 'pèbè', quantity: 2, unit: 'pieces' },
-      { id: '9', name: 'Grilled Djansang', quantity: 1/2, unit: 'cup' },
+      { id: '9', name: 'Grilled Djansang', quantity: 1 / 2, unit: 'cup' },
       { id: '10', name: 'olive oil', quantity: 2, unit: 'tablespoon' },
       { id: '11', name: 'Lemon juice', quantity: 1, unit: 'tablespoon' },
       { id: '12', name: 'maggi shrimp', quantity: 2, unit: 'pieces' },
@@ -529,7 +555,9 @@ export const mockRecipes: Recipe[] = [
       'Simmer over low heat for about 5min and add a little seasoning oil and salt.',
       'Preheat the barbecue and braiseyour fish,brushing it with the marinade from time to time . do this for about 15 minutes for each fish',
       'ready serve it with cassava stick or fried plantain. Enjoy your meal',
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '16',
@@ -548,7 +576,7 @@ export const mockRecipes: Recipe[] = [
       { id: '4', name: 'parsely', quantity: 1, unit: 'sprig' },
       { id: '5', name: 'green onion', quantity: 1, unit: 'cloves' },
       { id: '6', name: 'Crayfish', quantity: 50, unit: 'g' },
-      { id: '7', name: 'cube ginger', quantity: 1/2, unit: 'inch' },
+      { id: '7', name: 'cube ginger', quantity: 1 / 2, unit: 'inch' },
       { id: '8', name: 'habanero', quantity: 2, unit: 'tbsp' },
       { id: '9', name: 'garlic', quantity: 1, unit: 'cloves' },
       { id: '10', name: 'canola oil', quantity: 2, unit: 'tbsp' },
@@ -557,17 +585,19 @@ export const mockRecipes: Recipe[] = [
     ],
     instructions: [
       'cook the beans and the corn in 2 different pots',
-      'While waiting for the beans aand corn slice half of the onion.', 
+      'While waiting for the beans aand corn slice half of the onion.',
       'Blend the remaining onion half with garlic, ginger, parsley, green onion, harbanero and 1/3 cup of water.',
       'In a 5 quart skillet, heat up 1-2 tablespoon canola oil and saute onions until they start to brown.',
       'Add in corn/ beans, blended spices and half a cup of water. Cover and let simmer on medium for about 15 to 20 minutes',
       'Then add in palm oil and crayfish, cook for about 10 more minutes. Season to taste and serve.',
-    ]
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '17',
     name: 'Donut porridge beans',
-    description: 'Donut porridge beans," often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
+    description: 'Donut porridge beans, often called "bhb," is a Cameroonian culinary specialty, particularly popular in Yaoundé. It consists of sweet flour-based fritters, usually served with beans and corn porridge. It is a fast food dish, often eaten for breakfast.',
     imageUrl: 'https://i.pinimg.com/736x/96/4a/1d/964a1d512bd49ad89e42e14cb45add10.jpg',
     videoUrl: 'https://youtu.be/SWfcv0LuxPI',
     prepTime: 60,
@@ -592,25 +622,27 @@ export const mockRecipes: Recipe[] = [
       { id: '15', name: 'Lemongrass leaves', quantity: 5, unit: 'piece' },
     ],
     instructions: [
-    'For the donuts',
-    'Dissolve the sugar in water. Do the same for the yeast but in a different container.',
-    'Pour the sifted flour into a large bowl. Then, make a hole in the middle of the flour and pour in the sugar and the diluted yeast and mix gradually.', 
-    'As soon as the dough is smooth, beat it vigorously with your hand, then cover and leave to rest for an hour.',
-    'Put the oil on the heat and let it heat well. Then pour the dough into the oil using your hand, letting it slide between your thumb and index finger.',
-    'Once the desired amount of batter has been cut, use your thumb and forefinger to cut. Once the doughnut is cooked, drain and let it cool.',
-    'For the beans',
-    'Wash your ingredients. Then, chop the tomato, leek, onion, and pepper. Then, crush the garlic and chili pepper.',
-    'Let the oil heat up. Then add your chopped condiments. Then the crushed ones.',
-    'Add salt and water to it. Then let it simmer for a few minutes.',
-    'Add your bean, stir, and let it simmer for a few minutes. Your bean is ready to eat.',
-    'For the for the porridge',
-    'In a container, put the corn dough and water according to your desires.',
-    'Then mix well to obtain a slightly light and homogeneous dough.',
-    'Then boil water and pour in the paste while stirring.',
-    'Stirring regularly, cook for 5 minutes',
-    'Then add the lemongrass leaves and sugar to taste.',
-    'Enjoy your meal'
-    ]
+      'For the donuts',
+      'Dissolve the sugar in water. Do the same for the yeast but in a different container.',
+      'Pour the sifted flour into a large bowl. Then, make a hole in the middle of the flour and pour in the sugar and the diluted yeast and mix gradually.',
+      'As soon as the dough is smooth, beat it vigorously with your hand, then cover and leave to rest for an hour.',
+      'Put the oil on the heat and let it heat well. Then pour the dough into the oil using your hand, letting it slide between your thumb and index finger.',
+      'Once the desired amount of batter has been cut, use your thumb and forefinger to cut. Once the doughnut is cooked, drain and let it cool.',
+      'For the beans',
+      'Wash your ingredients. Then, chop the tomato, leek, onion, and pepper. Then, crush the garlic and chili pepper.',
+      'Let the oil heat up. Then add your chopped condiments. Then the crushed ones.',
+      'Add salt and water to it. Then let it simmer for a few minutes.',
+      'Add your bean, stir, and let it simmer for a few minutes. Your bean is ready to eat.',
+      'For the for the porridge',
+      'In a container, put the corn dough and water according to your desires.',
+      'Then mix well to obtain a slightly light and homogeneous dough.',
+      'Then boil water and pour in the paste while stirring.',
+      'Stirring regularly, cook for 5 minutes',
+      'Then add the lemongrass leaves and sugar to taste.',
+      'Enjoy your meal'
+    ],
+    region: '',
+    image: ''
   },
   {
     id: '18',
@@ -640,13 +672,15 @@ export const mockRecipes: Recipe[] = [
     ],
     instructions: [
       'Finely crush all the condiments: tomatoes, parsley, basil, pebe, chilies, garlic, ginger, 1 onion, and the pepper.',
-      'Finely chop 1 onion and set aside. Peel the plantains, place them in a large bowl of water, and set aside.', 
+      'Finely chop 1 onion and set aside. Peel the plantains, place them in a large bowl of water, and set aside.',
       'Cut the meat into small cubes, wash it and drain it.',
       'Put the palm oil in a saucepan. Once hot, add the chopped onion and the maggi.',
       'Mix a little and add the crushed spices, meat, ginger leaves, and plantains.',
       'Cover generously with water and simmer for 1.5 hours over low heat.',
       'Serve hot, without toppings.'
-    ]
+    ],
+    region: '',
+    image: ''
   },
 ];
 
@@ -664,3 +698,4 @@ export const getSimilarRecipes = (id: string, limit: number = 3): Recipe[] => {
     .filter(recipe => recipe.id !== id)
     .sort(() => 0.5 - Math.random())
     .slice(0, limit);
+};
