@@ -14,7 +14,7 @@ const Header = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="bg-gradient-to-r #b64e21 to-orange-500 text-white shadow-md sticky top-0 z-50">
+    <header className="bg-gradient-to-rrgba(182, 78, 33, 0.53) to-orange-500 text-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
 
         <div className="flex items-center gap-2">
