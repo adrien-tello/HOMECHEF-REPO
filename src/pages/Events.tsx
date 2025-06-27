@@ -17,9 +17,9 @@ const EventPage = () => {
     }, []);
 
     const cuisineImages = [
-        'https://images.unsplash.com/photo-1606788075761-7e65aa52aa7b',
-        'https://images.unsplash.com/photo-1630432610143-5c9e83b5b3d2',
-        'https://images.unsplash.com/photo-1576402187875-cb69fbb3e8f4'
+        'https://cameroonnewsagency.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-03-at-14.05.29_e80fd8c7.jpg',
+        'https://media.fastdl.app/get?__sig=UMR2S6OJweuTTTEw3qMs7Q&__expires=1751018214&uri=https%3A%2F%2Finstagram.fphl1-1.fna.fbcdn.net%2Fv%2Ft39.30808-6%2F506628815_122204597438062420_2644939124733855198_n.jpg%3Fstp%3Ddst-jpg_e15_fr_p1080x1080_tt6%26_nc_ht%3Dinstagram.fphl1-1.fna.fbcdn.net%26_nc_cat%3D104%26_nc_oc%3DQ6cZ2QEcQKhND9kQP9ZMV9GFt_pe7s9SI8K9l2rws3QOyxqkjLEviRUeOZk_y1pT2Bj8uY0ph0bF33JJxnNgXGkgYMH_%26_nc_ohc%3D3Gdl53ypeDMQ7kNvwGPWGrK%26_nc_gid%3D_GLf-eaHzCSya4UOgTUhLQ%26edm%3DANTKIIoAAAAA%26ccb%3D7-5%26oh%3D00_AfML6GkbaoLPRFCwQEljruXTNxpCrc_XBVRLHufQ8eth_w%26oe%3D6864392B%26_nc_sid%3Dd885a2&filename=506628815_122204597438062420_2644939124733855198_n.jpg',
+        'https://newswatchcameroon.com/wp-content/uploads/2025/02/Mouanko-4.jpg'
     ];
 
     const pastEvents = [
