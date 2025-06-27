@@ -23,7 +23,7 @@ const Header = () => {
           </button>
           <Link to="/" className="text-2xl font-bold flex items-center">
             <span className="mr-2">     
-                <img src="https://github.com/adrien-tello/HOMECHEF-REPO/blob/main/src/assets/HomeChef_Logo.png?raw=true" alt="logo" width={100} />
+                <img src="src/assets/HomeChef_Logo.pngsrc" alt="logo" width={100} />
             </span>
           </Link>
         </div>
