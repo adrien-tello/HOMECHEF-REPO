@@ -66,7 +66,7 @@ const ForgotPassword = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 px-4 rounded disabled:opacity-50"
+              className="w-full bg-orange-900 hover:bg-orange-900 text-white py-2 px-4 rounded disabled:opacity-50"
             >
               {loading ? 'Sending...' : 'Send Reset Email'}
             </button>

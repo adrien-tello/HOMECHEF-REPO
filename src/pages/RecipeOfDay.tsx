@@ -113,7 +113,7 @@ const RecipeOfDay = () => {
           
           <button
             onClick={handleViewRecipe}
-            className="w-full py-3 bg-orange-500 text-white rounded-md hover:bg-orange-600 transition-colors flex items-center justify-center"
+            className="w-full py-3 bg-orange-900 text-white rounded-md hover:bg-orange-900 transition-colors flex items-center justify-center"
           >
             View Full Recipe
             <ExternalLink size={16} className="ml-2" />

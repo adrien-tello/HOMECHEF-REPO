@@ -477,7 +477,7 @@ const Landing: React.FC = () => {
             className="mt-8 md:mt-0"
           >
             <img
-              src="https://i.pinimg.com/736x/ce/21/5d/ce215ddf78969606864fd88a705e4dc7.jpg"
+              src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg" 
               alt={language === 'en' ? "A table with Cameroonian dishes" : "Une table avec des plats camerounais"}
               className="w-full rounded-2xl shadow-xl border-4 border-white"
               loading="lazy"
@@ -486,7 +486,7 @@ const Landing: React.FC = () => {
         </div>
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg"
+            src="https://i.pinimg.com/736x/ce/21/5d/ce215ddf78969606864fd88a705e4dc7.jpg"
             alt="Background" 
             className="w-full h-full object-cover"
           />
