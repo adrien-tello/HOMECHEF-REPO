@@ -75,7 +75,7 @@ const Home = () => {
           <div
             className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-400"
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(234, 88, 12, 0.8), rgba(251, 146, 60, 0.7)), url(https://images.pexels.com/photos/7538066/pexels-photo-7538066.jpeg)`,
+              backgroundImage: `linear-gradient(to right, rgba(55, 24, 7, 0.8), rgba(102, 60, 8, 0.8)), url(https://i.pinimg.com/736x/c5/27/4b/c5274b49e5f6d5c8bb7dc6666a7e960e.jpg)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -101,7 +101,7 @@ const Home = () => {
           </div>
         </div>
 
-        <h2 className="text-2xl font-bold mb-6 border-l-4 border-orange-500 pl-4">
+        <h2 className="text-2xl font-bold mb-6 border-l-4 border-orange-900 pl-4">
           For You
         </h2>
 

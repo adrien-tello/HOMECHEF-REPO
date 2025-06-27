@@ -131,7 +131,7 @@ const Register = () => {
                   onChange={(e) => setName(e.target.value)}
                   onFocus={() => setActiveInput('name')}
                   onBlur={() => setActiveInput('')}
-                  placeholder="John Doe"
+                  placeholder="Aymerick Atsa"
                   className={`mt-1 w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
                     activeInput === 'name' 
                       ? 'ring-2 ring-orange-500 border-orange-300' 
