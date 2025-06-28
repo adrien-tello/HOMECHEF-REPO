@@ -1,6 +1,6 @@
 HomeChef – Manuel Utilisateur
 Version 1.0
-Plateforme : Web (React + Firebase + Ontologie)
+Plateforme : Web (React + Firebase )
 Public cible : Utilisateurs finaux (amateurs de cuisine, cuisiniers, passionnés de cuisine camerounaise)
 
 Table des matières

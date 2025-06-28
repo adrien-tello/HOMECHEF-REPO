@@ -17,19 +17,19 @@ const EventPage = () => {
     }, []);
 
     const cuisineImages = [
-        'https://cameroonnewsagency.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-03-at-14.05.29_e80fd8c7.jpg',
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.jeuneafrique.com%2F1428410%2Fculture%2Fau-cameroun-le-festival-diaspora-kitchen-revisite-le-patrimoine-culinaire%2F&psig=AOvVaw0zg_rNpycZLMllVVoVQ5L1&ust=1751196189276000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJC2psCAlI4DFQAAAAAdAAAAABAE',
+        'https://www.foodandhome.co.za/wp-content/uploads/2023/02/diaspora-kitchen-cameroon.jpg',
+        'https://scontent-los2-1.xx.fbcdn.net/v/t39.30808-6/485907402_4065401413695531_1320465653724101861_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-Yegx6dA72MQ7kNvwHfXR_Z&_nc_oc=AdmsZmnLAbQ4r-f09NFZzOt2MD5Z3FVMZlu-9X5QZPxpw6nXiHVtNQEztB1yQQnDsZZjj6KD5kcO6vJ4Lb6e9b_w&_nc_zt=23&_nc_ht=scontent-los2-1.xx&_nc_gid=pHgyV04TAu9n-Y6xtVltxQ&oh=00_AfOi96nF_k2btI2GUsnVrfrQ_EaoqipwPTXCvf1EtWJvsA&oe=6865BFDD',
         'https://newswatchcameroon.com/wp-content/uploads/2025/02/Mouanko-4.jpg'
     ];
 
     const pastEvents = [
-        { id: 1, title: 'Ndolé Festival', date: 'March 12, 2024', location: 'Douala, Cameroon', description: 'Celebrating the famous Ndolé dish with live cooking and music.' },
-        { id: 2, title: 'Jollof Cook-Off', date: 'January 20, 2024', location: 'Yaoundé, Cameroon', description: 'Top chefs compete to prepare the best Jollof rice.' },
+        { id: 1, title: '𝗦𝗘𝗠𝗘 𝗕𝗘𝗔𝗖𝗛 𝗛𝗢𝗧𝗘𝗟 𝗛𝗢𝗦𝗧𝗦 "𝗖𝗛𝗘𝗙 𝗜𝗡 𝗧𝗛𝗘 𝗕𝗘𝗔𝗖𝗛" 𝗖𝗨𝗟𝗜𝗡𝗔𝗥𝗬 𝗖𝗢𝗠𝗣𝗘𝗧𝗜𝗧𝗜𝗢𝗡', date: 'March 12, 2024', location: 'Douala, Cameroon', description: 'Culinary art gurus in Cameroon will join chefs the world over on October 20th' },
+        { id: 2, title: 'MOUANKO Culinary Event Édition', date: 'January 20, 2024', location: 'Yaoundé, Cameroon', description: 'Top chefs compete to prepare the best Jollof rice.' },
     ];
 
     const testimonials = [
-        { id: 1, name: 'Emmanuel N.', text: 'The Ndolé Festival was amazing! Great food, wonderful people, unforgettable experience.' },
-        { id: 2, name: 'Clarisse T.', text: 'The Jollof Cook-Off brought the community together. So much fun and delicious food everywhere!' }
+        { id: 1, name: 'Emmanuel N.', text: ' Great food, wonderful people, unforgettable experience.' },
+        { id: 2, name: 'Clarisse T.', text: ' So much fun and delicious food everywhere!' }
     ];
 
     const sliderSettings = {
@@ -41,7 +41,7 @@ const EventPage = () => {
         autoplay: true
     };
 
-    // Theme-based colors
+
     const isLight = theme === 'light';
     const bgColor = isLight ? 'bg-[#FFF8F0]' : 'bg-[#111827]';
     const textColor = isLight ? 'text-[#FFFFFF]' : 'text-[#F5F5F5]';
