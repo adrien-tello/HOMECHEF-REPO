@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Info, Calendar, History, LogOut, Sun, Moon } from 'lucide-react';
+import { Home, BookOpen, Info, Calendar, History, LogOut, Sun, Moon,CalendarDays } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -25,6 +25,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
     { path: '/about-us', icon: <Info size={20} />, label: t('nav.aboutUs') },
     { path: '/recipe-of-day', icon: <Calendar size={20} />, label: t('nav.recipeOfDay') },
     { path: '/my-experience', icon: <History size={20} />, label: t('nav.myExperience') },
+    { path: '/events', icon: <CalendarDays size={20} />, label: t('Events') },
   ];
 
   // Don't render sidebar at all on login/register pages for the moment
