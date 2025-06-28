@@ -13,16 +13,8 @@ import {
   doc,
   deleteDoc
 } from "firebase/firestore";
-import {
-  getStorage,
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  deleteObject
-} from "firebase/storage";
 
 const db = getFirestore();
-const storage = getStorage();
 
 interface Recipe {
   id?: string;
@@ -30,7 +22,6 @@ interface Recipe {
   ingredients: string[];
   instructions: string;
   difficulty: string;
-  image: string;
   userId: string;
   createdAt?: any;
 }
@@ -45,14 +36,11 @@ const MyRecipes = () => {
     ingredients: [''],
     instructions: '',
     difficulty: '',
-    image: '',
     userId: user?.id || ''
   });
-  const [imageFile, setImageFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Fetch user recipes in real-time
   useEffect(() => {
     if (!user) return;
 
@@ -66,7 +54,6 @@ const MyRecipes = () => {
       querySnapshot.forEach((doc) => {
         recipes.push({ id: doc.id, ...doc.data() } as Recipe);
       });
-      // Sort by creation date (newest first)
       recipes.sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis());
       setUserRecipes(recipes);
     });
@@ -91,19 +78,6 @@ const MyRecipes = () => {
     setNewRecipe((prev) => ({ ...prev, ingredients: updated }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImageFile(file);
-      // Preview image
-      const reader = new FileReader();
-      reader.onload = () => {
-        setNewRecipe(prev => ({ ...prev, image: reader.result as string }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleAddRecipe = async () => {
     if (!newRecipe.title.trim() || !user) {
       setError('Recipe title is required');
@@ -114,34 +88,21 @@ const MyRecipes = () => {
     setError('');
 
     try {
-      let imageUrl = newRecipe.image;
-      
-      // Upload new image if selected
-      if (imageFile) {
-        const storageRef = ref(storage, `userRecipes/${user.id}/${Date.now()}_${imageFile.name}`);
-        const snapshot = await uploadBytes(storageRef, imageFile);
-        imageUrl = await getDownloadURL(snapshot.ref);
-      }
-
       const recipeData = {
         ...newRecipe,
-        image: imageUrl,
         userId: user.id,
         createdAt: serverTimestamp()
       };
 
       await addDoc(collection(db, "userRecipes"), recipeData);
 
-      // Reset form
       setNewRecipe({
         title: '',
         ingredients: [''],
         instructions: '',
         difficulty: '',
-        image: '',
         userId: user.id
       });
-      setImageFile(null);
       setShowForm(false);
     } catch (error) {
       console.error("Error saving recipe:", error);
@@ -155,13 +116,6 @@ const MyRecipes = () => {
     if (!recipe.id || !window.confirm('Are you sure you want to delete this recipe?')) return;
 
     try {
-      // Delete image from storage if exists
-      if (recipe.image) {
-        const imageRef = ref(storage, recipe.image);
-        await deleteObject(imageRef).catch(console.error);
-      }
-
-      // Delete document from Firestore
       await deleteDoc(doc(db, "userRecipes", recipe.id));
     } catch (error) {
       console.error("Error deleting recipe:", error);
@@ -171,7 +125,6 @@ const MyRecipes = () => {
 
   return (
     <div className={`container mx-auto p-4 min-h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
           <h1 className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
@@ -196,27 +149,24 @@ const MyRecipes = () => {
         </div>
       )}
 
-      {/* Form */}
       {showForm && (
         <div className={`mb-8 p-6 rounded-lg shadow-md ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}>
           <h2 className={`text-xl font-semibold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
             New Recipe
           </h2>
-          
+
           <div className="mb-4">
             <label className={`block mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
               Recipe Title *
             </label>
             <input
               type="text"
-              placeholder="Eg: Ndolé with plantains"
               value={newRecipe.title}
               onChange={(e) => setNewRecipe({ ...newRecipe, title: e.target.value })}
               className={`w-full p-2 border rounded-md ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
             />
           </div>
 
-          {/* Ingredients */}
           <div className="mb-4">
             <label className={`block mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
               Ingredients *
@@ -225,7 +175,6 @@ const MyRecipes = () => {
               <div key={index} className="flex items-center mb-2">
                 <input
                   type="text"
-                  placeholder={`Ingredient ${index + 1}`}
                   value={ing}
                   onChange={(e) => handleIngredientChange(index, e.target.value)}
                   className={`flex-1 p-2 border rounded-md ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
@@ -248,13 +197,11 @@ const MyRecipes = () => {
             </button>
           </div>
 
-          {/* Instructions */}
           <div className="mb-4">
             <label className={`block mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
               Instructions *
             </label>
             <textarea
-              placeholder="Step-by-step instructions..."
               value={newRecipe.instructions}
               onChange={(e) => setNewRecipe({ ...newRecipe, instructions: e.target.value })}
               className={`w-full p-2 border rounded-md ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'}`}
@@ -262,8 +209,7 @@ const MyRecipes = () => {
             />
           </div>
 
-          {/* Difficulty */}
-          <div className="mb-4">
+          <div className="mb-6">
             <label className={`block mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
               Difficulty *
             </label>
@@ -277,33 +223,6 @@ const MyRecipes = () => {
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
             </select>
-          </div>
-
-          {/* Image upload */}
-          <div className="mb-6">
-            <label className={`block mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-              Image (optional)
-            </label>
-            <div className="flex items-center">
-              <label className="cursor-pointer px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 inline-block mr-4">
-                {imageFile ? "Change Image" : "Upload Image"}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden"
-                />
-              </label>
-              {newRecipe.image && (
-                <div className="relative">
-                  <img 
-                    src={newRecipe.image} 
-                    alt="Preview" 
-                    className="w-16 h-16 object-cover rounded" 
-                  />
-                </div>
-              )}
-            </div>
           </div>
 
           <div className="flex gap-2">
@@ -322,10 +241,8 @@ const MyRecipes = () => {
                   ingredients: [''],
                   instructions: '',
                   difficulty: '',
-                  image: '',
                   userId: user?.id || ''
                 });
-                setImageFile(null);
               }}
               className="px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500"
             >
@@ -335,7 +252,6 @@ const MyRecipes = () => {
         </div>
       )}
 
-      {/* Display Recipes */}
       {userRecipes.length === 0 && !showForm ? (
         <div className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-8 text-center shadow-md`}>
           <div className="w-20 h-20 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
@@ -361,15 +277,6 @@ const MyRecipes = () => {
               key={recipe.id} 
               className={`rounded-lg shadow-md overflow-hidden ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}
             >
-              {recipe.image && (
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={recipe.image} 
-                    alt={recipe.title} 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
               <div className="p-4">
                 <div className="flex justify-between items-start">
                   <h3 className={`text-lg font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
