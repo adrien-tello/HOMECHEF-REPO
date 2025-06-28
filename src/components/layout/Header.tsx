@@ -29,7 +29,7 @@ const Header = ({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) => {
           <Link to="/" className="text-2xl font-bold flex items-center">
             <span className="mr-2">
               <img
-                src="https://i.pinimg.com/736x/21/0e/c3/210ec3ca4b2999d93f98c35208f97254.jpg"
+                src="https://github.com/adrien-tello/HOMECHEF-REPO/blob/main/src/assets/HomeChef_Logo.png?raw=true"
                 alt="logo"
                 width={100}
               />
