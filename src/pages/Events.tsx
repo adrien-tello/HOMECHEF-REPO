@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTheme } from '../context/ThemeContext';
 import { Sparkles, CalendarCheck, Gift, PartyPopper } from 'lucide-react';
+import { color } from 'framer-motion';
 
 const EventPage = () => {
     const [activeTab, setActiveTab] = useState('upcoming');
@@ -25,9 +26,8 @@ const EventPage = () => {
     const pastEvents = [
         { id: 1, title: 'Ndolé Festival', date: 'March 12, 2024', location: 'Douala, Cameroon', description: 'Celebrating the famous Ndolé dish with live cooking and music.' },
         { id: 2, title: 'Jollof Cook-Off', date: 'January 20, 2024', location: 'Yaoundé, Cameroon', description: 'Top chefs compete to prepare the best Jollof rice.' },
-    ];
-
-    const testimonials = [
+    ]; 
+       const testimonials = [
         { id: 1, name: 'Emmanuel N.', text: 'The Ndolé Festival was amazing! Great food, wonderful people, unforgettable experience.' },
         { id: 2, name: 'Clarisse T.', text: 'The Jollof Cook-Off brought the community together. So much fun and delicious food everywhere!' }
     ];
@@ -126,10 +126,11 @@ const EventPage = () => {
                 <div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {pastEvents.map(event => (
-                            <div key={event.id} className={`${cardBg} rounded-xl shadow-lg hover:shadow-xl p-6 transition-shadow`}>
-                                <h3 className={`text-2xl font-bold mb-2`} style={{ color: primaryColor }}>{event.title}</h3>
-                                <p className="mb-1 font-semibold">{event.date} - {event.location}</p>
-                                <p>{event.description}</p>
+                            <div key={event.id} className="mb-6 p-4 rounded-lg bg-orange-50 shadow">
+                                <h3 className="text-xl font-bold text-orange-700 mb-1">{event.title}</h3>
+                                <div className="text-sm text-green-700 mb-1">{event.date}</div>
+                                <div className="text-sm text-gray-600 mb-1">{event.location}</div>
+                                <p className="text-gray-800">{event.description}</p>
                             </div>
                         ))}
                     </div>
@@ -143,8 +144,8 @@ const EventPage = () => {
                             <Slider {...sliderSettings}>
                                 {testimonials.map(testimonial => (
                                     <div key={testimonial.id} className={`${cardBg} p-6 rounded-xl shadow-lg text-center`}>
-                                        <p className="italic mb-4">"{testimonial.text}"</p>
-                                        <h4 className="font-semibold">{testimonial.name}</h4>
+                                        <p className="italic mb-4 text-gray-600">"{testimonial.text}"</p>
+                                        <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
                                     </div>
                                 ))}
                             </Slider>
@@ -155,7 +156,7 @@ const EventPage = () => {
 
             {/* Call to Action */}
             <div className={`mt-20 bg-[${primaryColor}] text-white rounded-xl p-8 text-center`}>
-                <h3 className="text-3xl font-bold mb-4">Partner with HomeChef Events</h3>
+                <h3 className="text-3xl font-bold mb-4 ">Partner with HomeChef Events</h3>
                 <p className="mb-6">Are you a sponsor, chef, or event organizer? Join us to host Cameroon’s biggest food festivals and competitions.</p>
                 <button className="bg-white text-[#622A0F] font-bold px-8 py-3 rounded-full text-lg hover:scale-105 transition-transform">
                     Contact Us
