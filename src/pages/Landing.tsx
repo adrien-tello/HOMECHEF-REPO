@@ -745,9 +745,8 @@ const Landing: React.FC = () => {
       {/* Newsletter Section */}
       <section id="contact" ref={contactRef} className="py-16 bg-[#f7f1e6]">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-6 text-[#a45329] font-serif">{t.newsletter}</h2>
           <p className="mb-8">
-            {language === 'en' 
+            {language === 'en'
               ? "Join our community and get Cameroonian recipes delivered to your inbox!"
               : "Rejoignez notre communauté et recevez des recettes camerounaises dans votre boîte de réception !"}
           </p>

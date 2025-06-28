@@ -20,7 +20,7 @@ const Sidebar = ({ isMobileMenuOpen = false, setIsMobileMenuOpen }: SidebarProps
   };
 
   const navItems = [
-    { path: '/', icon: <Home size={20} />, label: t('nav.home') },
+    { path: '/home', icon: <Home size={20} />, label: t('nav.home') },
     { path: '/my-recipes', icon: <BookOpen size={20} />, label: t('nav.myRecipes') },
     { path: '/about-us', icon: <Info size={20} />, label: t('nav.aboutUs') },
     { path: '/recipe-of-day', icon: <Calendar size={20} />, label: t('nav.recipeOfDay') },
