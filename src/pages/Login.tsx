@@ -15,7 +15,6 @@ const Login = () => {
   const [animateChef, setAnimateChef] = useState(false);
   const [cookingAnimation, setCookingAnimation] = useState(false);
 
-  // Cameroonian food facts for entertainment
   const foodFacts = [
     "Ndolé tastes better the next day!",
     "Did you know? Achu soup is traditionally eaten with fingers!",
@@ -41,8 +40,6 @@ const Login = () => {
 
     try {
       await login(email, password);
-
-      // Check email verification status
       const currentUser = auth.currentUser;
       if (currentUser && !currentUser.emailVerified) {
         await auth.signOut();
@@ -82,7 +79,6 @@ const Login = () => {
   return (
     <div className={`${darkMode ? 'dark' : ''}`}>
       <div className="min-h-screen flex flex-col md:flex-row font-sans dark:bg-gray-900 dark:text-white transition-colors duration-500">
-        {/* Dark Mode Toggle */}
         <div className="absolute top-4 right-4 z-10">
           <button
             onClick={() => setDarkMode(!darkMode)}
@@ -95,10 +91,9 @@ const Login = () => {
 
         {/* Left Section */}
         <div className="w-full md:w-1/2 bg-orange-50 dark:bg-gray-800 flex flex-col justify-center items-center p-6 md:p-12 transition-all duration-700 relative overflow-hidden">
-          {/* Animated background elements */}
           <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-orange-200 dark:bg-orange-900 opacity-20 animate-float"></div>
           <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-yellow-200 dark:bg-yellow-800 opacity-20 animate-float-delay"></div>
-          
+
           <div className="w-full max-w-md animate-fadeIn z-10">
             <h1 className="text-4xl font-extrabold text-orange-800 dark:text-orange-400 mb-2 font-serif">
               Home<span className="text-yellow-500 dark:text-yellow-300">Chef</span>
@@ -130,8 +125,8 @@ const Login = () => {
                   onBlur={() => setActiveInput('')}
                   placeholder="example@gmail.com"
                   className={`mt-1 w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
-                    activeInput === 'email' 
-                      ? 'ring-2 ring-orange-500 border-orange-300' 
+                    activeInput === 'email'
+                      ? 'ring-2 ring-orange-500 border-orange-300'
                       : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 />
@@ -148,23 +143,20 @@ const Login = () => {
                   onBlur={() => setActiveInput('')}
                   placeholder="••••••"
                   className={`mt-1 w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 transition-all duration-300 ${
-                    activeInput === 'password' 
-                      ? 'ring-2 ring-orange-500 border-orange-300' 
+                    activeInput === 'password'
+                      ? 'ring-2 ring-orange-500 border-orange-300'
                       : 'border-gray-300 dark:border-gray-600'
                   } bg-white dark:bg-gray-700 text-gray-900 dark:text-white`}
                 />
                 <div className="flex justify-between items-center mt-2">
                   <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
-                    <input 
-                      type="checkbox" 
-                      className="mr-2 h-4 w-4 text-orange-600 dark:text-orange-400 focus:ring-orange-500 border-gray-300 rounded" 
-                    /> 
+                    <input type="checkbox" className="mr-2 h-4 w-4" />
                     Remember me
                   </label>
                   <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
                     <input
                       type="checkbox"
-                      className="mr-2 h-4 w-4 text-orange-600 dark:text-orange-400 focus:ring-orange-500 border-gray-300 rounded"
+                      className="mr-2 h-4 w-4"
                       checked={showPassword}
                       onChange={() => setShowPassword(!showPassword)}
                     />
@@ -208,38 +200,30 @@ const Login = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <button 
+              <button
                 onClick={handleGoogleLogin}
                 disabled={loading}
                 className="flex items-center justify-center py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white shadow transition-all hover:scale-105 disabled:opacity-50"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
-                  alt="Google"
-                  className="w-5 h-5 mr-2"
-                />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-5 h-5 mr-2" />
                 Google
               </button>
 
-              <button 
+              <button
                 onClick={handleFacebookLogin}
                 disabled={loading}
                 className="flex items-center justify-center py-2 border rounded-md bg-white dark:bg-gray-700 dark:text-white shadow transition-all hover:scale-105 disabled:opacity-50"
               >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
-                  alt="Facebook"
-                  className="w-5 h-5 mr-2"
-                />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" className="w-5 h-5 mr-2" />
                 Facebook
               </button>
             </div>
           </div>
         </div>
 
-        {/* Right Section */}
+        {/* Right Section with centralized chef */}
         <div
-          className={`w-full md:w-1/2 flex flex-col items-center justify-center p-6 md:p-12 animate-fadeIn relative overflow-hidden ${
+          className={`w-full md:w-1/2 flex items-center justify-end p-6 md:p-12 animate-fadeIn relative overflow-hidden ${
             darkMode ? 'bg-gray-700' : ''
           }`}
           style={{
@@ -248,41 +232,40 @@ const Login = () => {
               : 'linear-gradient(to bottom, #5a2e20, #371d14, #220e08)',
           }}
         >
-          
-          <div className={`z-10 text-center transition-transform duration-700 ${animateChef ? 'scale-110' : ''}`}>
-            <img
-              src="https://i.pinimg.com/736x/21/0e/c3/210ec3ca4b2999d93f98c35208f97254.jpg"
-              alt="Chef"
-              className={`w-32 h-32 md:w-48 md:h-48 mb-6 rounded-full shadow-lg transition-all duration-500 hover:scale-110 ${animateChef ? 'animate-bounce' : ''}`}
-            />
-            <h3 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
-              Welcome Back Home
-            </h3>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
-              My Chef
-            </h1>
-            <p className="text-center text-sm md:text-base max-w-sm text-white mb-6">
-              Glad to see you back. What are you going to learn today? From easy to complex, we have them all.
-            </p>
-            
-            {/* Food fact display */}
-            <div className="bg-white dark:bg-gray-800 bg-opacity-20 p-4 rounded-lg max-w-sm">
-              <p className="text-white italic text-sm animate-fadeIn">
-                <span className="font-bold">Pro Tip:</span> {currentFact}
+          <div className={`z-10 text-center transition-transform duration-700 ${animateChef ? 'scale-110' : ''} max-w-md w-full`}>
+            <div className="flex flex-col items-center">
+              <img
+                src="https://i.pinimg.com/736x/21/0e/c3/210ec3ca4b2999d93f98c35208f97254.jpg"
+                alt="Chef"
+                className={`w-32 h-32 md:w-48 md:h-48 mb-6 rounded-full shadow-lg transition-all duration-500 hover:scale-110 ${animateChef ? 'animate-bounce' : ''}`}
+              />
+              <h3 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
+                Welcome Back Home
+              </h3>
+              <h1 className="text-2xl md:text-3xl font-bold mb-2 font-serif text-white">
+                My Chef
+              </h1>
+              <p className="text-center text-sm md:text-base max-w-sm text-white mb-6">
+                Glad to see you back. What are you going to learn today? From easy to complex, we have them all.
               </p>
-            </div>
-            
-            {/* Cooking animation */}
-            {cookingAnimation && (
-              <div className="mt-6 flex justify-center items-center space-x-2">
-                <span className="text-white">Preparing your culinary experience</span>
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
-                </div>
+
+              <div className="bg-white dark:bg-gray-800 bg-opacity-20 p-4 rounded-lg max-w-sm">
+                <p className="text-white italic text-sm animate-fadeIn">
+                  <span className="font-bold">Pro Tip:</span> {currentFact}
+                </p>
               </div>
-            )}
+
+              {cookingAnimation && (
+                <div className="mt-6 flex justify-center items-center space-x-2">
+                  <span className="text-white">Preparing your culinary experience</span>
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-orange-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

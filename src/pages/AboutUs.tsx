@@ -23,7 +23,7 @@ const AboutUs = () => {
         <div className={`rounded-lg ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} p-6 shadow-md`}>
           <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-4">
             <span className="text-2xl">
-              <img src="/src/assets/HomeChef_Logo.png" alt="HomeChef Logo" />
+              <img src="https://github.com/adrien-tello/HOMECHEF-REPO/blob/main/src/assets/HomeChef_Logo.png?raw=true" alt="HomeChef Logo" />
             </span>
           </div>
           <h2 className="text-xl font-bold mb-2">Cultural Preservation</h2>
@@ -91,17 +91,17 @@ const AboutUs = () => {
             {[
               {
                 name: "Tanefo Valentin",
-                role: "Backend Developer",
+                role: "Developer 1",
                 img: "https://i.pinimg.com/736x/23/9d/85/239d8551beea92a3bbf8f5fa0cf0567c.jpg",
               },
               {
                 name: "Coralex Joel",
-                role: "Frontend Developer",
+                role: "Developer 2",
                 img: "https://i.pinimg.com/736x/98/73/74/9873744634608f92c7bdb737c5b82173.jpg",
               },
               {
                 name: "Yemeli Tane",
-                role: "QA Engineer",
+                role: "Developer 3",
                 img: "https://i.pinimg.com/736x/6b/f5/2e/6bf52e0a90a72dd873523ec3823e3b47.jpg",
               },
             ].map((member, i) => (
