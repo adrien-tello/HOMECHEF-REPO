@@ -23,9 +23,9 @@ const translations = {
     team: "Our Team",
     teamText: "A diverse mix of amateurs, home cooks, developers, and food enthusiasts sharing one vision — authentic Cameroonian taste, beautifully served.",
     menuHighlights: "Popular Dishes",
-    freshDishes: "🥘 Fresh Dishes",
-    localRecipes: "🍛 Traditional Recipes",
-    healthyOptions: "🥑 Healthy Options",
+    freshDishes: "Fresh Dishes",
+    localRecipes: "Traditional Recipes",
+    healthyOptions: "Healthy Options",
     copyright: "© {year} HomeChef. All rights reserved.",
     seasonalSpecial: "Seasonal Special",
     chefPick: "Chef's Pick",
@@ -34,7 +34,7 @@ const translations = {
     ingredients: "Ingredients",
     difficulty: "Difficulty",
     viewRecipe: "View Recipe",
-    testimonials: "What do the developes have as message?",
+    testimonials: "What do the developers have as message?",
     subscribe: "Subscribe",
     culturalHeritage: "Celebrating Cameroon's Culinary Heritage",
     regions: "Explore by Region",
@@ -59,9 +59,9 @@ const translations = {
     team: "Notre Équipe",
     teamText: "Un mélange diversifié de chefs professionnels, de cuisiniers à domicile, de développeurs et d'enthousiastes de la nourriture partageant une vision commune - le goût authentique camerounais, magnifiquement servi.",
     menuHighlights: "Plats Populaires",
-    freshDishes: "🥘 Plats Frais",
-    localRecipes: "🍛 Recettes Traditionnelles",
-    healthyOptions: "🥑 Options Saines",
+    freshDishes: " Plats Frais",
+    localRecipes: " Recettes Traditionnelles",
+    healthyOptions: " Options Saines",
     copyright: "© {year} HomeChef. Tous droits réservés.",
     seasonalSpecial: "Spécial Saison",
     chefPick: "Choix du Chef",
@@ -268,22 +268,22 @@ const Landing: React.FC = () => {
 
   const features = [
     {
-      icon: "✨",
+      icon: "",
       textEn: "100+ Authentic Cameroonian recipes",
       textFr: "100+ Recettes camerounaises authentiques"
     },
     {
-      icon: "🎥",
+      icon: "",
       textEn: "Video + step-by-step instructions",
       textFr: "Vidéo + instructions étape par étape"
     },
     {
-      icon: "🧠",
+      icon: "",
       textEn: "Smart cost & time saving tips",
       textFr: "Conseils intelligents pour économiser temps et argent"
     },
     {
-      icon: "📚",
+      icon: "",
       textEn: "Learn regional cooking techniques",
       textFr: "Apprenez les techniques de cuisine régionales"
     }
@@ -477,7 +477,7 @@ const Landing: React.FC = () => {
             className="mt-8 md:mt-0"
           >
             <img
-              src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg" 
+              src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg"
               alt={language === 'en' ? "A table with Cameroonian dishes" : "Une table avec des plats camerounais"}
               className="w-full rounded-2xl shadow-xl border-4 border-white"
               loading="lazy"
@@ -486,7 +486,7 @@ const Landing: React.FC = () => {
         </div>
         <div className="absolute inset-0 z-0">
           <img
-            src="https://i.pinimg.com/736x/ce/21/5d/ce215ddf78969606864fd88a705e4dc7.jpg"
+            src="https://i.pinimg.com/736x/12/5c/dc/125cdc2956b17148bd75278def821605.jpg"
             alt="Background"
             className="w-full h-full object-cover"
           />
@@ -748,8 +748,8 @@ const Landing: React.FC = () => {
           <h2 className="text-3xl font-bold mb-6 text-[#a45329] font-serif">{t.newsletter}</h2>
           <p className="mb-8">
             {language === 'en' 
-              ? "Join our community and get weekly Cameroonian recipes delivered to your inbox!"
-              : "Rejoignez notre communauté et recevez des recettes camerounaises hebdomadaires dans votre boîte de réception !"}
+              ? "Join our community and get Cameroonian recipes delivered to your inbox!"
+              : "Rejoignez notre communauté et recevez des recettes camerounaises dans votre boîte de réception !"}
           </p>
           
 
