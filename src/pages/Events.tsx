@@ -17,9 +17,9 @@ const EventPage = () => {
     }, []);
 
     const cuisineImages = [
-        'https://images.unsplash.com/photo-1606788075761-7e65aa52aa7b',
-        'https://images.unsplash.com/photo-1630432610143-5c9e83b5b3d2',
-        'https://images.unsplash.com/photo-1576402187875-cb69fbb3e8f4'
+        'https://cameroonnewsagency.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-03-at-14.05.29_e80fd8c7.jpg',
+        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.jeuneafrique.com%2F1428410%2Fculture%2Fau-cameroun-le-festival-diaspora-kitchen-revisite-le-patrimoine-culinaire%2F&psig=AOvVaw0zg_rNpycZLMllVVoVQ5L1&ust=1751196189276000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJC2psCAlI4DFQAAAAAdAAAAABAE',
+        'https://newswatchcameroon.com/wp-content/uploads/2025/02/Mouanko-4.jpg'
     ];
 
     const pastEvents = [
@@ -43,7 +43,7 @@ const EventPage = () => {
 
     // Theme-based colors
     const isLight = theme === 'light';
-    const bgColor = isLight ? 'bg-[#FFF8F0]' : 'bg-[##111827]';
+    const bgColor = isLight ? 'bg-[#FFF8F0]' : 'bg-[#111827]';
     const textColor = isLight ? 'text-[#FFFFFF]' : 'text-[#F5F5F5]';
     const primaryColor = isLight ? '#622A0F' : '#622A0F';
     const cardBg = isLight ? 'bg-white' : 'bg-[#374151]';
@@ -72,7 +72,7 @@ const EventPage = () => {
                     Upcoming Events
                 </button>
                 <button
-                    className={`px-6 py-3 mx-2 rounded-full text-lg font-semibold transition-all ${activeTab === 'past' ? `bg-[${primaryColor}] text-white` : `bg-white ${borderColor} border text-[${primaryColor}]`}`}
+                    className={`px-6 py-3 mx-2 rounded-full text-lg font-semibold transition-all ${activeTab === 'past' ? `bg-[${primaryColor}] text-white` : `bg-white ${borderColor} border orange900-[${primaryColor}]`}`}
                     style={activeTab !== 'past' ? { borderColor: primaryColor, color: primaryColor } : {}}
                     onClick={() => setActiveTab('past')}
                 >
@@ -86,9 +86,8 @@ const EventPage = () => {
                     <div className="flex justify-center mb-4">
                         <CalendarDays size={80} color={primaryColor} />
                     </div>
-                    <h2 className="text-2xl font-semibold mb-4">Stay Tuned for Upcoming Events!</h2>
-                    <p className="mb-8">Exciting Cameroonian food competitions and culinary adventures are on the way. Prepare your kitchen!</p>
-
+                    <h2 className="text-2xl font-semibold mb-4 text-orange-700">Stay Tuned for Upcoming Events! </h2> 
+                    <p className="mb-8 text-orange-700">Exciting Cameroonian food competitions and culinary adventures are on the way. Prepare your kitchen!</p>
                     <div className="max-w-3xl mx-auto">
                         <Slider {...sliderSettings}>
                             {cuisineImages.map((src, index) => (
@@ -99,7 +98,7 @@ const EventPage = () => {
                         </Slider>
                     </div>
                 <div className="mt-12 text-center">
-                    <h3 className="text-2xl font-semibold mb-4 flex justify-center items-center gap-2">
+                    <h3 className="text-2xl font-semibold mb-4 flex justify-center items-center gap-2 text-orange-700">
                         <CalendarCheck size={28} /> Upcoming Sneak Peek
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
