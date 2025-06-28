@@ -221,7 +221,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Right Section with centralized chef */}
+        {/* Right Section  */}
         <div
           className={`w-full md:w-1/2 flex items-center justify-end p-6 md:p-12 animate-fadeIn relative overflow-hidden ${
             darkMode ? 'bg-gray-700' : ''
